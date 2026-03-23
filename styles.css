@@ -222,11 +222,48 @@ body{font-family:'Inter',-apple-system,sans-serif;font-size:13px;color:var(--col
 .hdr-btn:hover{background:var(--color-layer-level-0)}
 
 /* ── TEAM SELECT DROPDOWN (Variant D) ── */
-.hdr-team-select{display:none;align-items:center;gap:8px}
+.hdr-team-select{display:none;align-items:center;gap:10px;flex:1;min-width:0}
 .hdr-team-select.show{display:flex}
-.team-dropdown{padding:6px 12px;border:1px solid var(--color-border-sec);border-radius:var(--r-md);font-size:13px;font-family:inherit;font-weight:500;background:var(--color-layer-level-1);color:var(--color-on-primary);cursor:pointer;min-width:200px;appearance:auto}
-.team-dropdown:hover{border-color:var(--color-border-pri)}
-.team-dropdown:focus{outline:none;border-color:var(--color-btn-pri);box-shadow:0 0 0 2px rgba(15,98,254,.15)}
+.hdr-team-lbl{
+  flex-shrink:0;
+  font-size:12px;
+  font-weight:500;
+  letter-spacing:-.01em;
+  color:var(--color-on-secondary);
+}
+.team-dropdown{
+  flex:0 1 auto;
+  width:220px;
+  min-width:200px;
+  max-width:min(280px, 42vw);
+  height:34px;
+  padding:0 32px 0 12px;
+  border:1px solid rgba(0,0,0,.12);
+  border-radius:8px;
+  font-size:13px;
+  font-family:inherit;
+  font-weight:500;
+  background-color:var(--color-layer-level-1);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23505057' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;
+  background-position:right 10px center;
+  background-size:14px;
+  color:var(--color-on-primary);
+  cursor:pointer;
+  appearance:none;
+  -webkit-appearance:none;
+  box-shadow:0 1px 2px rgba(0,0,0,.05);
+  transition:border-color .15s ease,box-shadow .15s ease;
+}
+.team-dropdown:hover{
+  border-color:rgba(0,0,0,.2);
+  box-shadow:0 1px 3px rgba(0,0,0,.08);
+}
+.team-dropdown:focus{
+  outline:none;
+  border-color:var(--color-btn-pri);
+  box-shadow:0 0 0 2px rgba(15,98,254,.2);
+}
 
 /* ── INFO ICON ── */
 .ii{width:16px;height:16px;border-radius:50%;border:1px solid var(--color-border-def);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:var(--color-on-tertiary);cursor:help;flex-shrink:0;position:relative}
