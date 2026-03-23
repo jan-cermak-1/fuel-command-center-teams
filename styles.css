@@ -337,9 +337,15 @@ body{font-family:'Inter',-apple-system,sans-serif;font-size:13px;color:var(--col
 .sec-links{display:flex;align-items:center;gap:12px}
 .sec-link{color:var(--color-on-interactive);cursor:pointer;background:none;border:none;font-size:13px;font-family:inherit;display:flex;align-items:center;gap:3px}
 .sec-div-line{color:var(--color-on-tertiary)}
-.sec-team-sel{display:none;align-items:center;gap:8px;font-size:12px}
+.sec-team-sel{display:none;align-items:center;gap:10px;font-size:12px;flex-wrap:wrap}
 .sec-team-sel.show{display:flex}
-.sel{padding:4px 8px;border:1px solid var(--color-border-sec);border-radius:var(--r-md);font-size:12px;font-family:inherit;background:white;cursor:pointer;color:var(--color-on-primary)}
+/* Same styling as header team dropdown; slightly constrained in section titles */
+.sec-team-sel .team-dropdown{
+  width:min(220px, 100%);
+  min-width:160px;
+  max-width:min(240px, 55vw);
+  flex:0 1 auto;
+}
 
 /* ── LISTENING ── */
 .listen-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
