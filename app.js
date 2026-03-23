@@ -20,6 +20,7 @@ const DESCS = {
   B: 'Global team selector in the header (pill buttons). Works well for 3–5 teams.',
   C: 'Per-widget selector. Each team-contextual widget has its own dropdown.',
   D: 'Global team selector as dropdown. Scales to 15+ teams without cluttering the header.',
+  E: 'Same as D: header dropdown. KPI cards have no “All teams” footer; selected team is shown in the data sources bar.',
 };
 
 let cv = 'A';
@@ -46,17 +47,17 @@ function syncSectionSelectOptions() {
 
 function setV(v) {
   cv = v;
-  document.querySelectorAll('.vbtn').forEach((b,i)=>b.classList.toggle('active',['A','B','C','D'][i]===v));
+  document.querySelectorAll('.vbtn').forEach((b,i)=>b.classList.toggle('active',['A','B','C','D','E'][i]===v));
   const vdesc = document.getElementById('vdesc');
   if (vdesc) vdesc.textContent = DESCS[v];
-  const iB=v==='B', iC=v==='C', iD=v==='D';
+  const iB=v==='B', iC=v==='C', iD=v==='D', iE=v==='E';
 
-  // Header team tabs (B) vs select dropdown (D)
-  document.getElementById('hdrDiv').classList.toggle('show', iB || iD);
+  // Header team tabs (B) vs select dropdown (D + E)
+  document.getElementById('hdrDiv').classList.toggle('show', iB || iD || iE);
   document.getElementById('hdrTabs').classList.toggle('show', iB);
-  document.getElementById('hdrTeamSelect').classList.toggle('show', iD);
+  document.getElementById('hdrTeamSelect').classList.toggle('show', iD || iE);
   const hdrInfo = document.getElementById('hdrInfo');
-  if (hdrInfo) hdrInfo.classList.toggle('show', iB || iD);
+  if (hdrInfo) hdrInfo.classList.toggle('show', iB || iD || iE);
 
   const isA = v === 'A';
   const obj3card = document.getElementById('obj3');
@@ -66,11 +67,14 @@ function setV(v) {
     if (el) el.classList.toggle('show', isA);
   });
 
-  // KPI footers — always show "All teams"
+  // KPI footers — "All teams" strip (hidden in variant E)
+  const showKpiTeamFooters = v !== 'E';
   ['kf1','kf2','kf3','kf4'].forEach(id => {
     const el = document.getElementById(id);
-    if (el) el.classList.add('show');
+    if (el) el.classList.toggle('show', showKpiTeamFooters);
   });
+  const gcTeamStrip = document.getElementById('gcTeamStrip');
+  if (gcTeamStrip) gcTeamStrip.hidden = !iE;
   // Listening + top objectives merged-data footers — variant A only (B/C/D use team context)
   ['lf1', 'lf2', 'lf3'].forEach(id => {
     const el = document.getElementById(id);
@@ -81,8 +85,8 @@ function setV(v) {
   document.getElementById('listenSel').classList.toggle('show', iC);
   document.getElementById('objSel').classList.toggle('show', iC);
 
-  // Blue team headers on widgets: B/D (global team) + C (per-section selects)
-  const teamHdr = iB || iD || iC;
+  // Blue team headers on widgets: B/D/E (global team) + C (per-section selects)
+  const teamHdr = iB || iD || iE || iC;
   document.getElementById('ownedCtx').classList.toggle('show', teamHdr);
   document.getElementById('compCtx').classList.toggle('show', teamHdr);
   ['obj1ctx','obj2ctx','obj3ctx'].forEach(id=>document.getElementById(id).classList.toggle('show', teamHdr));
@@ -134,6 +138,8 @@ function applyTeam(team) {
   ['ownedTeam','compTeam','obj1team','obj2team','obj3team','obj1WhdrTeam','obj2WhdrTeam'].forEach(id=>{
     const e=document.getElementById(id); if(e) e.textContent=t.name;
   });
+  const gcTeamName = document.getElementById('gcTeamName');
+  if (gcTeamName) gcTeamName.textContent = t.name;
   document.querySelectorAll('.ttab[data-team]').forEach(btn => {
     const on = btn.dataset.team === team;
     btn.classList.toggle('active', on);
@@ -399,9 +405,8 @@ function initBcdObjectivePickers() {
 }
 
 syncSectionSelectOptions();
-// Init — Variant A by default, but KPI footers always show
+// Init — Variant A by default (setV configures KPI footers and gc team strip)
 setV('A');
-['kf1','kf2','kf3','kf4'].forEach(id=>document.getElementById(id).classList.add('show'));
 applyTeam(activeTeam);
 initObjectivePickers();
 initBcdObjectivePickers();

@@ -17,6 +17,7 @@
   <button class="vbtn" onclick="setV('B')">B — Global team selector</button>
   <button class="vbtn" onclick="setV('C')">C — Per-widget selector</button>
   <button class="vbtn" onclick="setV('D')">D — Team select dropdown</button>
+  <button class="vbtn" onclick="setV('E')">E — Like D, KPI footers off + team in data bar</button>
 </div>
 
 <div class="app">
@@ -129,7 +130,11 @@
     <!-- UPPER: data sources (same width as KPI grid) + KPIs + full-height trends -->
     <div class="upper">
       <div class="upper-main">
-    <div class="gc">
+    <div class="gc" id="gcBar">
+      <div class="gc-team-strip" id="gcTeamStrip" hidden>
+        <span class="gc-team-strip-lbl">Team</span>
+        <span class="gc-team-strip-name" id="gcTeamName">EMEA Marketing</span>
+      </div>
       <div class="gc-item">
         <div class="gc-avatar" style="background:#6b5eb8">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
