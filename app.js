@@ -21,10 +21,34 @@ const DESCS = {
   C: 'Per-widget selector. Each team-contextual widget has its own dropdown.',
   D: 'Global team selector as dropdown. Scales to 15+ teams without cluttering the header.',
   E: 'Same as D: header dropdown. KPI cards have no “All teams” footer; selected team is shown in the data sources bar.',
+  F: 'Like A (merged view, no header team). Social listening has its own team dropdown; both listening cards show that team. Objectives stay all-teams / A.',
 };
+
+const VARIANT_KEYS = ['A', 'B', 'C', 'D', 'E', 'F'];
 
 let cv = 'A';
 let activeTeam = 'emea';
+
+/** Read ?v= or ?variant= (A–F); invalid or missing → A */
+function getVariantFromUrl() {
+  try {
+    const p = new URLSearchParams(window.location.search);
+    const raw = (p.get('v') || p.get('variant') || 'A').trim().toUpperCase();
+    if (VARIANT_KEYS.includes(raw)) return raw;
+  } catch (_) {}
+  return 'A';
+}
+
+/** Keep URL in sync so links are shareable (e.g. ?v=D) */
+function syncVariantToUrl(v) {
+  if (!VARIANT_KEYS.includes(v)) return;
+  try {
+    const url = new URL(window.location.href);
+    url.searchParams.set('v', v);
+    url.searchParams.delete('variant');
+    history.replaceState(null, '', url.pathname + url.search + url.hash);
+  } catch (_) {}
+}
 
 /** B/D: global team; C: Objectives section team selector */
 function getObjectiveContextTeamId() {
@@ -47,10 +71,10 @@ function syncSectionSelectOptions() {
 
 function setV(v) {
   cv = v;
-  document.querySelectorAll('.vbtn').forEach((b,i)=>b.classList.toggle('active',['A','B','C','D','E'][i]===v));
+  document.querySelectorAll('.vbtn').forEach((b,i)=>b.classList.toggle('active',['A','B','C','D','E','F'][i]===v));
   const vdesc = document.getElementById('vdesc');
   if (vdesc) vdesc.textContent = DESCS[v];
-  const iB=v==='B', iC=v==='C', iD=v==='D', iE=v==='E';
+  const iB=v==='B', iC=v==='C', iD=v==='D', iE=v==='E', iF=v==='F';
 
   // Header team tabs (B) vs select dropdown (D + E)
   document.getElementById('hdrDiv').classList.toggle('show', iB || iD || iE);
@@ -59,7 +83,7 @@ function setV(v) {
   const hdrInfo = document.getElementById('hdrInfo');
   if (hdrInfo) hdrInfo.classList.toggle('show', iB || iD || iE);
 
-  const isA = v === 'A';
+  const isA = v === 'A' || v === 'F';
   const obj3card = document.getElementById('obj3');
   if (obj3card) obj3card.classList.toggle('obj3-variant-a', isA);
   ['obj1WhdrTeam','obj2WhdrTeam'].forEach(id => {
@@ -75,25 +99,36 @@ function setV(v) {
   });
   const gcTeamStrip = document.getElementById('gcTeamStrip');
   if (gcTeamStrip) gcTeamStrip.hidden = !iE;
-  // Listening + top objectives merged-data footers — variant A only (B/C/D use team context)
-  ['lf1', 'lf2', 'lf3'].forEach(id => {
+  // Listening card footers “All teams” — A only; F has per-team context, no footer on listen cards
+  ['lf1', 'lf2'].forEach(id => {
     const el = document.getElementById(id);
-    if (el) el.classList.toggle('show', isA);
+    if (el) el.classList.toggle('show', v === 'A');
   });
+  const lf3 = document.getElementById('lf3');
+  if (lf3) lf3.classList.toggle('show', v === 'A' || v === 'F');
 
-  // Section selectors (C)
-  document.getElementById('listenSel').classList.toggle('show', iC);
+  // Section selectors: C (listen + obj) or F (listen only)
+  document.getElementById('listenSel').classList.toggle('show', iC || iF);
   document.getElementById('objSel').classList.toggle('show', iC);
 
-  // Blue team headers on widgets: B/D/E (global team) + C (per-section selects)
-  const teamHdr = iB || iD || iE || iC;
-  document.getElementById('ownedCtx').classList.toggle('show', teamHdr);
-  document.getElementById('compCtx').classList.toggle('show', teamHdr);
-  ['obj1ctx','obj2ctx','obj3ctx'].forEach(id=>document.getElementById(id).classList.toggle('show', teamHdr));
+  // Listening cards: blue team bar (per-section dropdown in C/F, or global in B/D/E)
+  const listenTeamHdr = iC || iF || iB || iD || iE;
+  document.getElementById('ownedCtx').classList.toggle('show', listenTeamHdr);
+  document.getElementById('compCtx').classList.toggle('show', listenTeamHdr);
+  // Objectives: team context only when global (B/D/E) or per-section Objectives (C); not in A / F
+  const objTeamHdr = iB || iD || iE || iC;
+  ['obj1ctx','obj2ctx','obj3ctx'].forEach(id=>document.getElementById(id).classList.toggle('show', objTeamHdr));
 
   document.querySelectorAll('.obj-pick-wrap-a').forEach(el => el.classList.toggle('show', isA));
   document.querySelectorAll('.obj-pick-wrap-bcd').forEach(el => el.classList.toggle('show', !isA));
   if (!isA) closeAllObjPickPops();
+
+  if (iF) {
+    const lt = document.getElementById('listenTeamSel');
+    if (lt && lt.value) applyListenTeam(lt.value);
+  }
+
+  syncVariantToUrl(v);
 }
 
 function pickTeamFromSelect(sel) {
@@ -405,8 +440,8 @@ function initBcdObjectivePickers() {
 }
 
 syncSectionSelectOptions();
-// Init — Variant A by default (setV configures KPI footers and gc team strip)
-setV('A');
+// Init — variant from ?v= / ?variant=, else A; URL updated for sharing
+setV(getVariantFromUrl());
 applyTeam(activeTeam);
 initObjectivePickers();
 initBcdObjectivePickers();
