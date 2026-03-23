@@ -52,10 +52,6 @@ function setV(v) {
   document.getElementById('ownedCtx').classList.toggle('show', iB || iD);
   document.getElementById('compCtx').classList.toggle('show', iB || iD);
 
-  // Per-widget selectors (C)
-  document.getElementById('ownedPW').classList.toggle('show', iC);
-  document.getElementById('compPW').classList.toggle('show', iC);
-
   // Section selectors (C)
   document.getElementById('listenSel').classList.toggle('show', iC);
   document.getElementById('objSel').classList.toggle('show', iC);
