@@ -211,7 +211,10 @@ body{font-family:'Inter',-apple-system,sans-serif;font-size:13px;color:var(--col
 .gc-edit:hover{background:var(--color-layer-level-0)}
 
 /* ── KPI CARDS — Figma accurate ── */
-.upper{display:grid;grid-template-columns:minmax(0,2fr) minmax(280px,1fr);gap:12px}
+/* Left: data sources bar + KPI grid share one column; right: trends full height */
+.upper{display:grid;grid-template-columns:minmax(0,2fr) minmax(280px,1fr);gap:12px;align-items:stretch}
+.upper-main{display:flex;flex-direction:column;gap:12px;min-width:0}
+.gc{width:100%;flex-shrink:0}
 .kpi-wrap{display:flex;flex-direction:column;gap:12px}
 .kpi-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .kpi-card{background:var(--color-layer-level-1);border-radius:var(--r-lg);border:1px solid var(--color-border-sec);box-shadow:var(--sh1);overflow:hidden;display:flex;flex-direction:column}
@@ -231,11 +234,11 @@ body{font-family:'Inter',-apple-system,sans-serif;font-size:13px;color:var(--col
 .kpi-footer.show{display:flex}
 
 /* ── TRENDS ── */
-.trends-card{background:var(--color-layer-level-1);border-radius:var(--r-lg);box-shadow:var(--sh1);display:flex;flex-direction:column;overflow:hidden}
+.trends-card{background:var(--color-layer-level-1);border-radius:var(--r-lg);border:1px solid var(--color-border-sec);box-shadow:var(--sh1);display:flex;flex-direction:column;overflow:hidden;min-height:0;align-self:stretch}
 .w-hdr{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:1px solid var(--color-border-sec);flex-shrink:0}
 .w-title{font-size:13px;font-weight:600;display:flex;align-items:center;gap:8px}
 .country-pill{display:flex;align-items:center;gap:4px;padding:4px 10px;border:1px solid var(--color-border-sec);border-radius:var(--r-md);font-size:12px;font-weight:500;cursor:pointer;color:var(--color-on-secondary)}
-.trends-body{padding:0 18px 18px;overflow-y:auto;flex:1}
+.trends-body{padding:0 18px 18px;overflow-y:auto;flex:1;min-height:0}
 .trend{padding:14px 0;border-bottom:1px solid var(--color-border-sec)}
 .trend:last-child{border-bottom:none}
 .trend-name{font-size:13px;font-weight:600;margin-bottom:6px}
