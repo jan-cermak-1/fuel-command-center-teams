@@ -81,29 +81,53 @@ function setV(v) {
 
 function pickTeamFromSelect(sel) {
   const team = sel.value;
-  applyTeam(team);
+  if (sel.id === 'listenTeamSel') applyListenTeam(team);
+  else if (sel.id === 'objTeamSel') applyObjTeam(team);
+  else applyTeam(team);
 }
 
+/** Variant C: Social listening section — only listening cards */
+function applyListenTeam(team) {
+  const t = TEAMS[team];
+  if (!t) return;
+  ['ownedTeam','compTeam'].forEach(id=>{
+    const e=document.getElementById(id); if(e) e.textContent=t.name;
+  });
+  ['ownedCard','compCard'].forEach(id=>{
+    const e=document.getElementById(id);
+    e.classList.remove('flash'); void e.offsetWidth; e.classList.add('flash');
+  });
+}
 
+/** Variant C: Objectives section — only objective widgets */
+function applyObjTeam(team) {
+  const t = TEAMS[team];
+  if (!t) return;
+  ['obj1team','obj2team','obj3team','obj1WhdrTeam','obj2WhdrTeam'].forEach(id=>{
+    const e=document.getElementById(id); if(e) e.textContent=t.name;
+  });
+  ['obj1','obj2','obj3'].forEach(id=>{
+    const e=document.getElementById(id);
+    e.classList.remove('flash'); void e.offsetWidth; e.classList.add('flash');
+  });
+}
+
+/** Header / variant B+D — one global team for all team-scoped widgets */
 function applyTeam(team) {
   const t = TEAMS[team];
   if (!t) return;
   activeTeam = team;
 
-  // Update all team name labels
   ['ownedTeam','compTeam','obj1team','obj2team','obj3team','obj1WhdrTeam','obj2WhdrTeam'].forEach(id=>{
     const e=document.getElementById(id); if(e) e.textContent=t.name;
   });
-  // Header pills (B): keep active tab in sync with global team
   document.querySelectorAll('.ttab[data-team]').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.team === team);
   });
-  // Sync all team dropdowns
-  ['teamDropdown','listenTeamSel','objTeamSel'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el && [...el.options].some(o => o.value === team)) el.value = team;
-  });
-  // Flash team-dependent cards
+  const dd = document.getElementById('teamDropdown');
+  if (dd && [...dd.options].some(o => o.value === team)) dd.value = team;
+  // Do not sync listenTeamSel / objTeamSel — variant C keeps them independent
+
   ['ownedCard','compCard','obj1','obj2','obj3'].forEach(id=>{
     const e=document.getElementById(id);
     e.classList.remove('flash'); void e.offsetWidth; e.classList.add('flash');
@@ -119,12 +143,10 @@ function pickTeam(el, team) {
 syncSectionSelectOptions();
 // Init — Variant A by default, but KPI footers always show
 setV('A');
-// KPI footers: keep "All teams" label always visible as it's always true
 ['kf1','kf2','kf3','kf4'].forEach(id=>document.getElementById(id).classList.add('show'));
 applyTeam(activeTeam);
 
 function toggleSide() {
   const side = document.querySelector('.side');
   side.classList.toggle('collapsed');
-  // CSS handles the chevron rotation via .collapsed class
 }
