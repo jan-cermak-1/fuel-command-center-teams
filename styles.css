@@ -169,7 +169,6 @@ body{font-family:'Inter',-apple-system,sans-serif;font-size:13px;color:var(--col
 .ttab{display:flex;align-items:center;gap:6px;padding:5px 12px;border-radius:var(--r-pill);border:1px solid var(--color-border-sec);background:var(--color-layer-level-1);font-size:12px;font-weight:500;font-family:inherit;color:var(--color-on-secondary);cursor:pointer;transition:all .12s}
 .ttab:hover{background:var(--color-layer-level-0)}
 .ttab.active{background:#dbeafe;border-color:var(--color-btn-pri);color:var(--color-btn-pri);font-weight:600}
-.tdot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
 .hdr-right{margin-left:auto;display:flex;align-items:center;gap:8px;flex-shrink:0}
 .hdr-team-info{display:none;align-items:center;gap:5px;font-size:11px;color:var(--color-on-tertiary)}
 .hdr-team-info.show{display:flex}
@@ -262,7 +261,6 @@ body{font-family:'Inter',-apple-system,sans-serif;font-size:13px;color:var(--col
 .listen-title{font-size:13px;font-weight:600;display:flex;align-items:center;gap:6px}
 .obj-ctx.listen-ctx{display:none}
 .obj-ctx.listen-ctx.show{display:flex;animation:fadeDown .2s ease-out}
-.ctx-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
 .listen-body{padding:18px;display:flex;flex-direction:column;gap:18px}
 .insight{display:flex;flex-direction:column;gap:5px}
 .ins-title{font-size:12px;font-weight:600}

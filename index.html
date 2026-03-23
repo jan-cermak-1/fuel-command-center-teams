@@ -111,12 +111,11 @@
     <div class="cmd-title">Command center</div>
     <div class="hdr-div" id="hdrDiv"></div>
     <div class="hdr-tabs" id="hdrTabs">
-      <button type="button" class="ttab active" data-team="emea" onclick="pickTeam(this,'emea')"><span class="tdot" aria-hidden="true"></span>EMEA Marketing</button>
-      <button type="button" class="ttab" data-team="japac" onclick="pickTeam(this,'japac')"><span class="tdot" aria-hidden="true"></span>JAPAC Social</button>
-      <button type="button" class="ttab" data-team="hq" onclick="pickTeam(this,'hq')"><span class="tdot" aria-hidden="true"></span>HQ Leadership</button>
+      <button type="button" class="ttab active" data-team="emea" onclick="pickTeam(this,'emea')">EMEA Marketing</button>
+      <button type="button" class="ttab" data-team="japac" onclick="pickTeam(this,'japac')">JAPAC Social</button>
+      <button type="button" class="ttab" data-team="hq" onclick="pickTeam(this,'hq')">HQ Leadership</button>
     </div>
     <div class="hdr-team-select" id="hdrTeamSelect">
-      <span class="tdot hdr-team-dot" id="hdrTeamDot" aria-hidden="true"></span>
       <select class="team-dropdown" id="teamDropdown" onchange="pickTeamFromSelect(this)">
         <option value="emea" selected>EMEA Marketing</option>
         <option value="japac">JAPAC Social</option>
@@ -279,7 +278,6 @@
       <div class="sec-hdr">
         <div class="sec-title">Social listening summary
           <div class="sec-team-sel" id="listenSel">
-            <span class="tdot sec-team-dot" id="secListenDot" aria-hidden="true"></span>
             <span style="color:var(--color-on-tertiary);font-weight:400;font-size:12px">Team:</span>
             <select class="sel" id="listenTeamSel" onchange="pickTeamFromSelect(this)"></select>
             <div class="ii" data-tip="Each team has its own mention credits. Data shown for the selected team.">?</div>
@@ -288,7 +286,7 @@
       </div>
       <div class="listen-grid">
         <div class="listen-card" id="ownedCard">
-          <div class="obj-ctx listen-ctx" id="ownedCtx"><span class="ctx-dot" id="ownedDot" style="background:#0f62fe"></span><span id="ownedTeam">EMEA Marketing</span></div>
+          <div class="obj-ctx listen-ctx" id="ownedCtx"><span id="ownedTeam">EMEA Marketing</span></div>
           <div class="listen-hdr"><div class="listen-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Owned profiles</div><div class="ii" data-tip="Summary of your owned social profiles">?</div></div>
           <div class="listen-body">
             <div class="insight"><div class="ins-title">1. Fan sentiment during key moments</div><div class="ins-text">Most conversation clusters around live game moments — touchdowns, turnovers, 4th down decisions, and last-minute scoring drives. When games are close, fans post in rapid bursts.</div><div class="ins-ex">Post examples: <a href="#">1</a> <a href="#">2</a> <a href="#">3</a></div></div>
@@ -296,7 +294,7 @@
           </div>
         </div>
         <div class="listen-card" id="compCard">
-          <div class="obj-ctx listen-ctx" id="compCtx"><span class="ctx-dot" id="compDot" style="background:#0f62fe"></span><span id="compTeam">EMEA Marketing</span></div>
+          <div class="obj-ctx listen-ctx" id="compCtx"><span id="compTeam">EMEA Marketing</span></div>
           <div class="listen-hdr"><div class="listen-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Competitive insights</div><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#9d9da0" stroke-width="2" style="cursor:pointer;flex-shrink:0"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></div>
           <div class="listen-body">
             <div class="insight"><div class="ins-title">1. Competitive positioning shift</div><div class="ins-text">Competitor brands are increasing engagement with behind-the-scenes content and athlete stories. Their audience response rate is growing 18% faster than category average.</div><div class="ins-ex">Post examples: <a href="#">1</a> <a href="#">2</a> <a href="#">3</a></div></div>
@@ -322,7 +320,6 @@
       <div class="sec-hdr">
         <div class="sec-title">Objectives
           <div class="sec-team-sel" id="objSel">
-            <span class="tdot sec-team-dot" id="secObjDot" aria-hidden="true"></span>
             <span style="color:var(--color-on-tertiary);font-weight:400;font-size:12px">Team:</span>
             <select class="sel" id="objTeamSel" onchange="pickTeamFromSelect(this)"></select>
           </div>
@@ -339,7 +336,7 @@
       <div class="obj-grid">
         <!-- Chart widget 1 -->
         <div class="obj-card" id="obj1">
-          <div class="obj-ctx" id="obj1ctx"><span style="width:8px;height:8px;border-radius:50%;background:#0f62fe;display:inline-block;flex-shrink:0" id="obj1dot"></span><span id="obj1team">EMEA Marketing</span></div>
+          <div class="obj-ctx" id="obj1ctx"><span id="obj1team">EMEA Marketing</span></div>
           <div class="obj-whdr">
             <div style="flex:1"><div class="obj-wname">Performance Measurement & ROI Optimization</div><div class="obj-period">Last 30 Days</div></div>
             <div class="obj-menu"><span class="obj-3dot">···</span><div class="obj-status on-track">ON TRACK</div></div>
@@ -375,7 +372,7 @@
 
         <!-- Chart widget 2 -->
         <div class="obj-card" id="obj2">
-          <div class="obj-ctx" id="obj2ctx"><span style="width:8px;height:8px;border-radius:50%;background:#0f62fe;display:inline-block;flex-shrink:0" id="obj2dot"></span><span id="obj2team">EMEA Marketing</span></div>
+          <div class="obj-ctx" id="obj2ctx"><span id="obj2team">EMEA Marketing</span></div>
           <div class="obj-whdr">
             <div style="flex:1"><div class="obj-wname">Performance Measurement & ROI Optimization</div><div class="obj-period">Last 30 Days</div></div>
             <div class="obj-menu"><span class="obj-3dot">···</span><div class="obj-status off-track">OFF TRACK</div></div>
@@ -411,7 +408,7 @@
 
         <!-- Your top objectives — also team-dependent -->
         <div class="obj-card" id="obj3">
-          <div class="obj-ctx" id="obj3ctx"><span style="width:8px;height:8px;border-radius:50%;background:#0f62fe;display:inline-block;flex-shrink:0" id="obj3dot"></span><span id="obj3team">EMEA Marketing</span></div>
+          <div class="obj-ctx" id="obj3ctx"><span id="obj3team">EMEA Marketing</span></div>
           <div class="top-obj-hdr">Your top objectives</div>
           <div class="top-obj-body">
             <div class="prog-sec-lbl">YOU ARE ALMOST THERE</div>

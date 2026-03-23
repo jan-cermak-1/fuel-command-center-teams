@@ -35,14 +35,6 @@ function syncSectionSelectOptions() {
   });
 }
 
-function initTeamTabDots() {
-  document.querySelectorAll('.ttab[data-team]').forEach(btn => {
-    const dot = btn.querySelector('.tdot');
-    const id = btn.dataset.team;
-    if (dot && TEAMS[id]) dot.style.background = TEAMS[id].color;
-  });
-}
-
 function setV(v) {
   cv = v;
   document.querySelectorAll('.vbtn').forEach((b,i)=>b.classList.toggle('active',['A','B','C','D'][i]===v));
@@ -94,10 +86,6 @@ function applyTeam(team) {
   ['ownedTeam','compTeam','obj1team','obj2team','obj3team'].forEach(id=>{
     const e=document.getElementById(id); if(e) e.textContent=t.name;
   });
-  // Team color dots (cards + header + section selectors)
-  ['ownedDot','compDot','obj1dot','obj2dot','obj3dot','hdrTeamDot','secListenDot','secObjDot'].forEach(id=>{
-    const e=document.getElementById(id); if(e) e.style.background=t.color;
-  });
   // Header pills (B): keep active tab in sync with global team
   document.querySelectorAll('.ttab[data-team]').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.team === team);
@@ -121,7 +109,6 @@ function pickTeam(el, team) {
 }
 
 syncSectionSelectOptions();
-initTeamTabDots();
 // Init — Variant A by default, but KPI footers always show
 setV('A');
 // KPI footers: keep "All teams" label always visible as it's always true
