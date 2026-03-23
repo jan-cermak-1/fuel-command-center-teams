@@ -21,84 +21,66 @@
 
 <div class="app">
 
-<!-- LEFT NAV -->
-<nav class="nav">
-  <!-- Logo -->
+<!-- LEFT NAV — Platform navigation (Figma 19889:207018 / SOUL tokens) -->
+<nav class="nav" aria-label="Main navigation">
   <div class="nav-logo-wrap">
-    <img src="assets/64993e063ccbbe2ec7fd166660ca13185ce73a68.svg" width="36" height="36" alt="emplifi logo">
+    <img src="assets/64993e063ccbbe2ec7fd166660ca13185ce73a68.svg" width="36" height="36" alt="Emplifi">
   </div>
-
-  <!-- Divider -->
-  <div class="nav-divider"></div>
-
-  <!-- Nav items - scrollable area -->
+  <div class="nav-divider" role="presentation"></div>
   <div class="nav-scroll">
-    <!-- HOME / Command Center - ACTIVE (using the blue gradient home icon) -->
-    <div class="ni active" title="Command Center">
-      <div class="ni-icon-wrap" style="position:relative;width:24px;height:24px">
-        <img src="assets/bb20a4398b708c936ddae881f531ab0154c243b1.svg" width="21" height="21" style="position:absolute;inset:12.5%">
-        <img src="assets/23c0654fac1f3f66f01146dfdebf390fa8804070.svg" width="6" height="6" style="position:absolute;left:9px;top:11px">
-      </div>
+    <div class="ni ni-home active" title="Home" role="button" tabindex="0" aria-current="page">
+      <span class="ni-ico ni-ico--app"><img src="assets/soul/home-filled.svg" width="24" height="24" alt=""></span>
     </div>
-
-    <div class="ni" title="Unified Analytics">
-      <img src="assets/cd877f73fd2e8bcae6ad69de9e81cb76946d3caa.svg" width="20" height="20">
+    <div class="ni" title="Unified Analytics" role="button" tabindex="0">
+      <span class="ni-ico ni-ico--app"><img src="assets/soul/unified-analytics-app-filled.svg" width="24" height="24" alt=""></span>
     </div>
-
-    <div class="ni" title="Publisher">
-      <img src="assets/75742e3cf54978323cab841ae16003c1f81ed1d6.svg" width="20" height="20">
+    <div class="ni" title="Publisher" role="button" tabindex="0">
+      <span class="ni-ico ni-ico--app"><img src="assets/soul/send-publish.svg" width="24" height="24" alt=""></span>
     </div>
-
-    <div class="ni" title="Community">
-      <img src="assets/a7bf44720b89fd38aec1e5fd134262d0eba93ba6.svg" width="20" height="20">
+    <div class="ni" title="Community" role="button" tabindex="0">
+      <span class="ni-ico ni-ico--app"><img src="assets/soul/community-app-filled.svg" width="24" height="24" alt=""></span>
     </div>
-
-    <div class="ni" title="Care">
-      <img src="assets/87a17457226b84cae247755fb49c3902f5093805.svg" width="20" height="20">
+    <div class="ni" title="Care" role="button" tabindex="0">
+      <span class="ni-ico ni-ico--app"><img src="assets/soul/care-app.svg" width="24" height="24" alt=""></span>
     </div>
-
-    <div class="ni" title="Content">
-      <img src="assets/50004d6bd18efc60af25a517d41db5b3e5ff0064.svg" width="20" height="20">
+    <div class="ni" title="Content" role="button" tabindex="0">
+      <span class="ni-ico ni-ico--app"><img src="assets/soul/content-app-filled.svg" width="24" height="24" alt=""></span>
     </div>
-
-    <div class="ni" title="User Generated Content">
-      <img src="assets/880540638668c67b13ae316b1fa8fe2a00b9b43b.svg" width="20" height="20">
+    <div class="ni" title="User Generated Content" role="button" tabindex="0">
+      <span class="ni-ico ni-ico--app"><img src="assets/soul/label-content-new.svg" width="24" height="24" alt=""></span>
     </div>
-
-    <div class="ni" title="Influencers">
-      <img src="assets/9aa88eaa2fa467a2273aff519a63b018af0e4c51.svg" width="20" height="20">
+    <div class="ni" title="Influencers" role="button" tabindex="0">
+      <span class="ni-ico ni-ico--app"><img src="assets/soul/influencers-app-filled.svg" width="24" height="24" alt=""></span>
     </div>
-
-    <div class="ni" title="Bot">
-      <img src="assets/133062acf363fc35492f18a1f40d5935bafece18.svg" width="20" height="20">
+    <div class="ni" title="Rating &amp; Reviews" role="button" tabindex="0">
+      <span class="ni-ico ni-ico--app"><img src="assets/soul/rating-reviews-app-filled.svg" width="24" height="24" alt=""></span>
+    </div>
+    <div class="ni" title="Bot" role="button" tabindex="0">
+      <span class="ni-ico ni-ico--app"><img src="assets/soul/chatbot-ghost.svg" width="24" height="24" alt=""></span>
+    </div>
+    <div class="ni" title="Agent" role="button" tabindex="0">
+      <span class="ni-ico ni-ico--app"><img src="assets/soul/agent-app.svg" width="24" height="24" alt=""></span>
     </div>
   </div>
-
   <div class="nav-sp"></div>
-
-  <!-- Bottom section -->
   <div class="nav-bottom">
-    <!-- Plus button (blue circle) -->
-    <div class="ni ni-plus" title="Add">
-      <svg width="16" height="16" viewBox="0 0 8 8" fill="none"><path d="M5 1C5 0.448 4.552 0 4 0C3.448 0 3 0.448 3 1V3H1C0.448 3 0 3.448 0 4C0 4.552 0.448 5 1 5H3V7C3 7.552 3.448 8 4 8C4.552 8 5 7.552 5 7V5H7C7.552 5 8 4.552 8 4C8 3.448 7.552 3 7 3H5V1Z" fill="white"/></svg>
+    <div class="ni ni-plus" title="Add data source" role="button" tabindex="0">
+      <span class="ni-plus-inner"><img class="nav-ico" src="assets/soul/plus.svg" width="18" height="18" alt=""></span>
     </div>
-
-    <div class="ni" title="Help">
-      <img src="assets/d5514b15f56972a4e716396adb0476871376393d.svg" width="20" height="20">
+    <div class="nav-divider" role="presentation"></div>
+    <div class="nav-bottom-actions">
+    <div class="ni ni-foot" title="Help" role="button" tabindex="0">
+      <span class="ni-ico ni-ico--meta"><img src="assets/soul/help.svg" width="20" height="20" alt=""></span>
     </div>
-
-    <div class="ni" title="Settings">
-      <img src="assets/04976dbf8be2d379f2a3df928c3f54089fca69f6.svg" width="20" height="20">
+    <div class="ni ni-foot" title="Settings" role="button" tabindex="0">
+      <span class="ni-ico ni-ico--meta"><img src="assets/soul/settings.svg" width="20" height="20" alt=""></span>
     </div>
-
-    <!-- Avatar with notification badge -->
-    <div class="ni ni-avatar" title="Profile">
-      <div style="position:relative;width:24px;height:24px">
-        <img src="assets/9ce1b58aecd4ef61664409fcdd66adf48254ccb2.png" width="24" height="24" style="border-radius:50%;object-fit:cover">
-        <div style="position:absolute;bottom:0;right:-2px;background:#da1e28;border:1px solid #1a1f26;border-radius:100px;min-width:14px;height:12px;display:flex;align-items:center;justify-content:center;padding:0 2px">
-          <span style="font-size:8px;font-weight:700;color:white;line-height:1">12</span>
-        </div>
+    <div class="ni ni-avatar ni-foot" title="Profile" role="button" tabindex="0">
+      <div class="nav-avatar-wrap">
+        <img src="assets/9ce1b58aecd4ef61664409fcdd66adf48254ccb2.png" width="24" height="24" alt="">
+        <span class="nav-avatar-badge" aria-label="12 notifications">12</span>
       </div>
+    </div>
     </div>
   </div>
 </nav>
@@ -287,19 +269,21 @@
       <div class="listen-grid">
         <div class="listen-card" id="ownedCard">
           <div class="obj-ctx listen-ctx" id="ownedCtx"><span id="ownedTeam">EMEA Marketing</span></div>
-          <div class="listen-hdr"><div class="listen-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Owned profiles</div><div class="listen-hdr-actions"><div class="gc-merge merge-badge" id="mergeBadgeOwned"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>Data from all 3 teams</div><div class="ii" data-tip="Summary of your owned social profiles">?</div></div></div>
+          <div class="listen-hdr"><div class="listen-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Owned profiles</div><div class="ii" data-tip="Summary of your owned social profiles">?</div></div>
           <div class="listen-body">
             <div class="insight"><div class="ins-title">1. Fan sentiment during key moments</div><div class="ins-text">Most conversation clusters around live game moments — touchdowns, turnovers, 4th down decisions, and last-minute scoring drives. When games are close, fans post in rapid bursts.</div><div class="ins-ex">Post examples: <a href="#">1</a> <a href="#">2</a> <a href="#">3</a></div></div>
             <div class="insight"><div class="ins-title">2. Individual star player conversations</div><div class="ins-text">Team-level mentions remain high, but conversation revolves around star players — especially QBs, top receivers, defensive playmakers, and rising rookies.</div><div class="ins-ex">Post examples: <a href="#">1</a> <a href="#">2</a> <a href="#">3</a></div></div>
           </div>
+          <div class="kpi-footer show" id="lf1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#9d9da0" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>All teams</div>
         </div>
         <div class="listen-card" id="compCard">
           <div class="obj-ctx listen-ctx" id="compCtx"><span id="compTeam">EMEA Marketing</span></div>
-          <div class="listen-hdr"><div class="listen-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Competitive insights</div><div class="listen-hdr-actions"><div class="gc-merge merge-badge" id="mergeBadgeComp"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>Data from all 3 teams</div><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#9d9da0" stroke-width="2" style="cursor:pointer;flex-shrink:0"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></div></div>
+          <div class="listen-hdr"><div class="listen-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Competitive insights</div><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#9d9da0" stroke-width="2" style="cursor:pointer;flex-shrink:0"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></div>
           <div class="listen-body">
             <div class="insight"><div class="ins-title">1. Competitive positioning shift</div><div class="ins-text">Competitor brands are increasing engagement with behind-the-scenes content and athlete stories. Their audience response rate is growing 18% faster than category average.</div><div class="ins-ex">Post examples: <a href="#">1</a> <a href="#">2</a> <a href="#">3</a></div></div>
             <div class="insight"><div class="ins-title">2. Share of voice trends</div><div class="ins-text">Brand mentions on X show a 12% increase in competitive share of voice. Key topics: product launches, sponsorship announcements, community campaigns.</div><div class="ins-ex">Post examples: <a href="#">1</a> <a href="#">2</a> <a href="#">3</a></div></div>
           </div>
+          <div class="kpi-footer show" id="lf2"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#9d9da0" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>All teams</div>
         </div>
       </div>
     </div>
@@ -339,15 +323,50 @@
         <div class="obj-card" id="obj1">
           <div class="obj-ctx" id="obj1ctx"><span id="obj1team">EMEA Marketing</span></div>
           <div class="obj-whdr">
-            <div style="flex:1"><div class="obj-wname">Performance Measurement & ROI Optimization</div><div class="obj-period">Last 30 Days</div></div>
-            <div class="gc-merge team-badge" id="obj1WhdrTeam">EMEA Marketing</div>
-            <div class="obj-menu"><span class="obj-3dot">···</span><div class="obj-status on-track">ON TRACK</div></div>
+            <div style="flex:1"><div class="obj-wname" id="obj1Wname">Performance Measurement & ROI Optimization</div><div class="obj-period" id="obj1Period">Last 30 Days</div></div>
+            <span class="neutral-team-badge" id="obj1WhdrTeam">EMEA Marketing</span>
+            <div class="obj-menu">
+              <div class="obj-pick-wrap obj-pick-wrap-a show" id="obj1PickWrap" aria-hidden="false">
+                <button type="button" class="obj-pick-btn" id="obj1PickBtn" aria-expanded="false" aria-haspopup="dialog" aria-controls="obj1PickPop" title="Choose team and objective">
+                  <svg class="obj-pick-ico" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg>
+                </button>
+                <div class="obj-pick-pop" id="obj1PickPop" role="dialog" aria-label="Choose team and objective" hidden>
+                  <div class="obj-pick-step" id="obj1StepTeams">
+                    <div class="obj-pick-pop-hdr">Choose team</div>
+                    <div class="obj-pick-scroll">
+                      <div class="obj-pick-list" id="obj1TeamList" role="listbox" aria-label="Teams"></div>
+                    </div>
+                  </div>
+                  <div class="obj-pick-step" id="obj1StepObjs" hidden>
+                    <div class="obj-pick-nav">
+                      <button type="button" class="obj-pick-back" id="obj1PickBack">← Back</button>
+                    </div>
+                    <div class="obj-pick-pop-hdr obj-pick-pop-hdr--team" id="obj1PickObjHdr"></div>
+                    <div class="obj-pick-scroll">
+                      <div class="obj-pick-list" id="obj1ObjList" role="listbox" aria-label="Objectives"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="obj-pick-wrap obj-pick-wrap-bcd" id="obj1BcdWrap">
+                <button type="button" class="obj-pick-btn" id="obj1BcdBtn" aria-expanded="false" aria-haspopup="dialog" aria-controls="obj1BcdPop" title="Choose objective">
+                  <svg class="obj-pick-ico" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg>
+                </button>
+                <div class="obj-pick-pop" id="obj1BcdPop" role="dialog" aria-label="Objectives" hidden>
+                  <div class="obj-pick-pop-hdr obj-pick-pop-hdr--team" id="obj1BcdHdr"></div>
+                  <div class="obj-pick-scroll">
+                    <div class="obj-pick-list" id="obj1BcdObjList" role="listbox" aria-label="Objectives"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="obj-status on-track" id="obj1Status">ON TRACK</div>
+            </div>
           </div>
           <div class="obj-body">
-            <div class="obj-val">48.3</div>
-            <div class="obj-chg up"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>+21%</div>
-            <div class="obj-meta-row"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Customer Acquisition Efficiency Index (CAEI)</div>
-            <div class="obj-meta-row"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Below 50 CAEI</div>
+            <div class="obj-val" id="obj1Val">48.3</div>
+            <div class="obj-chg up" id="obj1ChgWrap"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg><span id="obj1ChgTxt">+21%</span></div>
+            <div class="obj-meta-row"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><span id="obj1Meta1">Customer Acquisition Efficiency Index (CAEI)</span></div>
+            <div class="obj-meta-row"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span id="obj1Meta2">Below 50 CAEI</span></div>
           </div>
           <div class="obj-chart">
             <svg viewBox="0 0 279 162" preserveAspectRatio="none">
@@ -376,15 +395,50 @@
         <div class="obj-card" id="obj2">
           <div class="obj-ctx" id="obj2ctx"><span id="obj2team">EMEA Marketing</span></div>
           <div class="obj-whdr">
-            <div style="flex:1"><div class="obj-wname">Performance Measurement & ROI Optimization</div><div class="obj-period">Last 30 Days</div></div>
-            <div class="gc-merge team-badge" id="obj2WhdrTeam">EMEA Marketing</div>
-            <div class="obj-menu"><span class="obj-3dot">···</span><div class="obj-status off-track">OFF TRACK</div></div>
+            <div style="flex:1"><div class="obj-wname" id="obj2Wname">Performance Measurement & ROI Optimization</div><div class="obj-period" id="obj2Period">Last 30 Days</div></div>
+            <span class="neutral-team-badge" id="obj2WhdrTeam">EMEA Marketing</span>
+            <div class="obj-menu">
+              <div class="obj-pick-wrap obj-pick-wrap-a show" id="obj2PickWrap" aria-hidden="false">
+                <button type="button" class="obj-pick-btn" id="obj2PickBtn" aria-expanded="false" aria-haspopup="dialog" aria-controls="obj2PickPop" title="Choose team and objective">
+                  <svg class="obj-pick-ico" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg>
+                </button>
+                <div class="obj-pick-pop" id="obj2PickPop" role="dialog" aria-label="Choose team and objective" hidden>
+                  <div class="obj-pick-step" id="obj2StepTeams">
+                    <div class="obj-pick-pop-hdr">Choose team</div>
+                    <div class="obj-pick-scroll">
+                      <div class="obj-pick-list" id="obj2TeamList" role="listbox" aria-label="Teams"></div>
+                    </div>
+                  </div>
+                  <div class="obj-pick-step" id="obj2StepObjs" hidden>
+                    <div class="obj-pick-nav">
+                      <button type="button" class="obj-pick-back" id="obj2PickBack">← Back</button>
+                    </div>
+                    <div class="obj-pick-pop-hdr obj-pick-pop-hdr--team" id="obj2PickObjHdr"></div>
+                    <div class="obj-pick-scroll">
+                      <div class="obj-pick-list" id="obj2ObjList" role="listbox" aria-label="Objectives"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="obj-pick-wrap obj-pick-wrap-bcd" id="obj2BcdWrap">
+                <button type="button" class="obj-pick-btn" id="obj2BcdBtn" aria-expanded="false" aria-haspopup="dialog" aria-controls="obj2BcdPop" title="Choose objective">
+                  <svg class="obj-pick-ico" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg>
+                </button>
+                <div class="obj-pick-pop" id="obj2BcdPop" role="dialog" aria-label="Objectives" hidden>
+                  <div class="obj-pick-pop-hdr obj-pick-pop-hdr--team" id="obj2BcdHdr"></div>
+                  <div class="obj-pick-scroll">
+                    <div class="obj-pick-list" id="obj2BcdObjList" role="listbox" aria-label="Objectives"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="obj-status off-track" id="obj2Status">OFF TRACK</div>
+            </div>
           </div>
           <div class="obj-body">
-            <div class="obj-val">12.2</div>
-            <div class="obj-chg dn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>-74%</div>
-            <div class="obj-meta-row"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Customer Acquisition Efficiency Index (CAEI)</div>
-            <div class="obj-meta-row"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Below 50 CAEI</div>
+            <div class="obj-val" id="obj2Val">12.2</div>
+            <div class="obj-chg dn" id="obj2ChgWrap"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg><span id="obj2ChgTxt">-74%</span></div>
+            <div class="obj-meta-row"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><span id="obj2Meta1">Customer Acquisition Efficiency Index (CAEI)</span></div>
+            <div class="obj-meta-row"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span id="obj2Meta2">Below 50 CAEI</span></div>
           </div>
           <div class="obj-chart">
             <svg viewBox="0 0 279 162" preserveAspectRatio="none">
@@ -410,18 +464,19 @@
         </div>
 
         <!-- Your top objectives — also team-dependent -->
-        <div class="obj-card" id="obj3">
+        <div class="obj-card obj3-variant-a" id="obj3">
           <div class="obj-ctx" id="obj3ctx"><span id="obj3team">EMEA Marketing</span></div>
-          <div class="top-obj-hdr"><span class="top-obj-title">Your top objectives</span><div class="gc-merge merge-badge" id="mergeBadgeObj3"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>Data from all 3 teams</div></div>
+          <div class="top-obj-hdr"><span class="top-obj-title">Your top objectives</span></div>
           <div class="top-obj-body">
             <div class="prog-sec-lbl">YOU ARE ALMOST THERE</div>
-            <div class="prog-item"><div class="prog-name">Maximizing Audience Engagement through Social Media Strategies in the Evolving Landscape of Entertainment</div><div class="prog-bar"><div class="prog-fill" style="width:89%;background:#20c54f"></div></div><div class="prog-meta">89%</div></div>
-            <div class="prog-item"><div class="prog-name">Maximizing Audience Engagement through Social Media Strategies in the Evolving Landscape of Entertainment</div><div class="prog-bar"><div class="prog-fill" style="width:89%;background:#20c54f"></div></div><div class="prog-meta">89%</div></div>
+            <div class="prog-item"><div class="prog-name-row"><div class="prog-name">Maximizing Audience Engagement through Social Media Strategies in the Evolving Landscape of Entertainment</div><span class="neutral-team-badge">EMEA Marketing</span></div><div class="prog-bar"><div class="prog-fill" style="width:89%;background:#20c54f"></div></div><div class="prog-meta">89%</div></div>
+            <div class="prog-item"><div class="prog-name-row"><div class="prog-name">Maximizing Audience Engagement through Social Media Strategies in the Evolving Landscape of Entertainment</div><span class="neutral-team-badge">JAPAC Social</span></div><div class="prog-bar"><div class="prog-fill" style="width:89%;background:#20c54f"></div></div><div class="prog-meta">89%</div></div>
             <div class="prog-sec-lbl">IN PROGRESS</div>
-            <div class="prog-item"><div class="prog-name">Maximizing Audience Engagement through Social Media Strategies in the Evolving Landscape of Entertainment</div><div class="prog-bar"><div class="prog-fill" style="width:56%;background:#f5a623"></div></div><div class="prog-meta">56%</div></div>
-            <div class="prog-item"><div class="prog-name">Maximizing Audience Engagement through Social Media Strategies in the Evolving Landscape of Entertainment</div><div class="prog-bar"><div class="prog-fill" style="width:56%;background:#f5a623"></div></div><div class="prog-meta">56%</div></div>
-            <div class="prog-item"><div class="prog-name">Maximizing Audience Engagement through Social Media Strategies in the Evolving Landscape of Entertainment</div><div class="prog-bar"><div class="prog-fill" style="width:56%;background:#f5a623"></div></div><div class="prog-meta">56%</div></div>
+            <div class="prog-item"><div class="prog-name-row"><div class="prog-name">Maximizing Audience Engagement through Social Media Strategies in the Evolving Landscape of Entertainment</div><span class="neutral-team-badge">HQ Leadership</span></div><div class="prog-bar"><div class="prog-fill" style="width:56%;background:#f5a623"></div></div><div class="prog-meta">56%</div></div>
+            <div class="prog-item"><div class="prog-name-row"><div class="prog-name">Maximizing Audience Engagement through Social Media Strategies in the Evolving Landscape of Entertainment</div><span class="neutral-team-badge">NA East Coast</span></div><div class="prog-bar"><div class="prog-fill" style="width:56%;background:#f5a623"></div></div><div class="prog-meta">56%</div></div>
+            <div class="prog-item"><div class="prog-name-row"><div class="prog-name">Maximizing Audience Engagement through Social Media Strategies in the Evolving Landscape of Entertainment</div><span class="neutral-team-badge">LATAM Growth</span></div><div class="prog-bar"><div class="prog-fill" style="width:56%;background:#f5a623"></div></div><div class="prog-meta">56%</div></div>
           </div>
+          <div class="kpi-footer show" id="lf3"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#9d9da0" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>All teams</div>
         </div>
       </div>
     </div>
@@ -439,15 +494,14 @@
   </div>
   <!-- Collapsed icons strip (visible only when collapsed) -->
   <div class="side-collapsed-icons">
-    <!-- Notification icon -->
-    <div style="position:relative;cursor:pointer">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.45)" stroke-width="1.7"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
-      <div style="position:absolute;top:-2px;right:-4px;background:#da1e28;border-radius:6px;min-width:16px;height:14px;display:flex;align-items:center;justify-content:center;padding:0 3px">
-        <span style="font-size:8px;font-weight:700;color:white">32</span>
-      </div>
+    <div class="sci-wrap" title="Notifications">
+      <img class="sci-ico" src="assets/soul/notification.svg" width="20" height="20" alt="">
+      <span class="sci-badge">32</span>
     </div>
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.45)" stroke-width="1.7" style="cursor:pointer"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
-    <img src="assets/64993e063ccbbe2ec7fd166660ca13185ce73a68.svg" width="24" height="24">
+    <button type="button" class="sci-btn" title="Help">
+      <img class="sci-ico" src="assets/soul/help.svg" width="20" height="20" alt="">
+    </button>
+    <img class="sci-logo" src="assets/64993e063ccbbe2ec7fd166660ca13185ce73a68.svg" width="24" height="24" alt="">
   </div>
   <div class="side-body">
     <div class="welcome-card">
