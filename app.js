@@ -121,7 +121,9 @@ function applyTeam(team) {
     const e=document.getElementById(id); if(e) e.textContent=t.name;
   });
   document.querySelectorAll('.ttab[data-team]').forEach(btn => {
-    btn.classList.toggle('active', btn.dataset.team === team);
+    const on = btn.dataset.team === team;
+    btn.classList.toggle('active', on);
+    btn.setAttribute('aria-selected', on ? 'true' : 'false');
   });
   const dd = document.getElementById('teamDropdown');
   if (dd && [...dd.options].some(o => o.value === team)) dd.value = team;

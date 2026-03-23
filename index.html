@@ -110,10 +110,12 @@
   <div class="cmd-hdr">
     <div class="cmd-title">Command center</div>
     <div class="hdr-div" id="hdrDiv"></div>
-    <div class="hdr-tabs" id="hdrTabs">
-      <button type="button" class="ttab active" data-team="emea" onclick="pickTeam(this,'emea')">EMEA Marketing</button>
-      <button type="button" class="ttab" data-team="japac" onclick="pickTeam(this,'japac')">JAPAC Social</button>
-      <button type="button" class="ttab" data-team="hq" onclick="pickTeam(this,'hq')">HQ Leadership</button>
+    <div class="hdr-tabs" id="hdrTabs" role="tablist" aria-label="Team">
+      <div class="hdr-tabs-inner">
+      <button type="button" class="ttab active" role="tab" aria-selected="true" data-team="emea" onclick="pickTeam(this,'emea')">EMEA Marketing</button>
+      <button type="button" class="ttab" role="tab" aria-selected="false" data-team="japac" onclick="pickTeam(this,'japac')">JAPAC Social</button>
+      <button type="button" class="ttab" role="tab" aria-selected="false" data-team="hq" onclick="pickTeam(this,'hq')">HQ Leadership</button>
+      </div>
     </div>
     <div class="hdr-team-select" id="hdrTeamSelect">
       <select class="team-dropdown" id="teamDropdown" onchange="pickTeamFromSelect(this)">
