@@ -111,11 +111,12 @@
     <div class="cmd-title">Command center</div>
     <div class="hdr-div" id="hdrDiv"></div>
     <div class="hdr-tabs" id="hdrTabs">
-      <button class="ttab active" onclick="pickTeam(this,'emea')"><span class="tdot" style="background:#0f62fe"></span>EMEA Marketing</button>
-      <button class="ttab" onclick="pickTeam(this,'japac')"><span class="tdot" style="background:#20c54f"></span>JAPAC Social</button>
-      <button class="ttab" onclick="pickTeam(this,'hq')"><span class="tdot" style="background:#f5a623"></span>HQ Leadership</button>
+      <button type="button" class="ttab active" data-team="emea" onclick="pickTeam(this,'emea')"><span class="tdot" aria-hidden="true"></span>EMEA Marketing</button>
+      <button type="button" class="ttab" data-team="japac" onclick="pickTeam(this,'japac')"><span class="tdot" aria-hidden="true"></span>JAPAC Social</button>
+      <button type="button" class="ttab" data-team="hq" onclick="pickTeam(this,'hq')"><span class="tdot" aria-hidden="true"></span>HQ Leadership</button>
     </div>
     <div class="hdr-team-select" id="hdrTeamSelect">
+      <span class="tdot hdr-team-dot" id="hdrTeamDot" aria-hidden="true"></span>
       <select class="team-dropdown" id="teamDropdown" onchange="pickTeamFromSelect(this)">
         <option value="emea" selected>EMEA Marketing</option>
         <option value="japac">JAPAC Social</option>
@@ -278,8 +279,9 @@
       <div class="sec-hdr">
         <div class="sec-title">Social listening summary
           <div class="sec-team-sel" id="listenSel">
+            <span class="tdot sec-team-dot" id="secListenDot" aria-hidden="true"></span>
             <span style="color:var(--color-on-tertiary);font-weight:400;font-size:12px">Team:</span>
-            <select class="sel"><option>EMEA Marketing</option><option>JAPAC Social</option><option>HQ Leadership</option></select>
+            <select class="sel" id="listenTeamSel" onchange="pickTeamFromSelect(this)"></select>
             <div class="ii" data-tip="Each team has its own mention credits. Data shown for the selected team.">?</div>
           </div>
         </div>
@@ -320,8 +322,9 @@
       <div class="sec-hdr">
         <div class="sec-title">Objectives
           <div class="sec-team-sel" id="objSel">
+            <span class="tdot sec-team-dot" id="secObjDot" aria-hidden="true"></span>
             <span style="color:var(--color-on-tertiary);font-weight:400;font-size:12px">Team:</span>
-            <select class="sel"><option>EMEA Marketing</option><option>JAPAC Social</option><option>HQ Leadership</option></select>
+            <select class="sel" id="objTeamSel" onchange="pickTeamFromSelect(this)"></select>
           </div>
         </div>
         <div class="sec-links">
