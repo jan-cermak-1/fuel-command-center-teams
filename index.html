@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Command Center – Multi-Team Prototype</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- VARIANT BAR -->
+<div class="vbar">
+  <span class="vbar-lbl">Variant</span>
+  <button class="vbtn active" onclick="setV('A')">A — All teams merged</button>
+  <button class="vbtn" onclick="setV('B')">B — Global team selector</button>
+  <button class="vbtn" onclick="setV('C')">C — Per-widget selector</button>
+  <button class="vbtn" onclick="setV('D')">D — Team select dropdown</button>
+</div>
+
+<div class="app">
+
+<!-- LEFT NAV -->
+<nav class="nav">
+  <!-- Logo -->
+  <div class="nav-logo-wrap">
+    <img src="assets/64993e063ccbbe2ec7fd166660ca13185ce73a68.svg" width="36" height="36" alt="emplifi logo">
+  </div>
+
+  <!-- Divider -->
+  <div class="nav-divider"></div>
+
+  <!-- Nav items - scrollable area -->
+  <div class="nav-scroll">
+    <!-- HOME / Command Center - ACTIVE (using the blue gradient home icon) -->
+    <div class="ni active" title="Command Center">
+      <div class="ni-icon-wrap" style="position:relative;width:24px;height:24px">
+        <img src="assets/bb20a4398b708c936ddae881f531ab0154c243b1.svg" width="21" height="21" style="position:absolute;inset:12.5%">
+        <img src="assets/23c0654fac1f3f66f01146dfdebf390fa8804070.svg" width="6" height="6" style="position:absolute;left:9px;top:11px">
+      </div>
+    </div>
+
+    <div class="ni" title="Unified Analytics">
+      <img src="assets/cd877f73fd2e8bcae6ad69de9e81cb76946d3caa.svg" width="20" height="20">
+    </div>
+
+    <div class="ni" title="Publisher">
+      <img src="assets/75742e3cf54978323cab841ae16003c1f81ed1d6.svg" width="20" height="20">
+    </div>
+
+    <div class="ni" title="Community">
+      <img src="assets/a7bf44720b89fd38aec1e5fd134262d0eba93ba6.svg" width="20" height="20">
+    </div>
+
+    <div class="ni" title="Care">
+      <img src="assets/87a17457226b84cae247755fb49c3902f5093805.svg" width="20" height="20">
+    </div>
+
+    <div class="ni" title="Content">
+      <img src="assets/50004d6bd18efc60af25a517d41db5b3e5ff0064.svg" width="20" height="20">
+    </div>
+
+    <div class="ni" title="User Generated Content">
+      <img src="assets/880540638668c67b13ae316b1fa8fe2a00b9b43b.svg" width="20" height="20">
+    </div>
+
+    <div class="ni" title="Influencers">
+      <img src="assets/9aa88eaa2fa467a2273aff519a63b018af0e4c51.svg" width="20" height="20">
+    </div>
+
+    <div class="ni" title="Bot">
+      <img src="assets/133062acf363fc35492f18a1f40d5935bafece18.svg" width="20" height="20">
+    </div>
+  </div>
+
+  <div class="nav-sp"></div>
+
+  <!-- Bottom section -->
+  <div class="nav-bottom">
+    <!-- Plus button (blue circle) -->
+    <div class="ni ni-plus" title="Add">
+      <svg width="16" height="16" viewBox="0 0 8 8" fill="none"><path d="M5 1C5 0.448 4.552 0 4 0C3.448 0 3 0.448 3 1V3H1C0.448 3 0 3.448 0 4C0 4.552 0.448 5 1 5H3V7C3 7.552 3.448 8 4 8C4.552 8 5 7.552 5 7V5H7C7.552 5 8 4.552 8 4C8 3.448 7.552 3 7 3H5V1Z" fill="white"/></svg>
+    </div>
+
+    <div class="ni" title="Help">
+      <img src="assets/d5514b15f56972a4e716396adb0476871376393d.svg" width="20" height="20">
+    </div>
+
+    <div class="ni" title="Settings">
+      <img src="assets/04976dbf8be2d379f2a3df928c3f54089fca69f6.svg" width="20" height="20">
+    </div>
+
+    <!-- Avatar with notification badge -->
+    <div class="ni ni-avatar" title="Profile">
+      <div style="position:relative;width:24px;height:24px">
+        <img src="assets/9ce1b58aecd4ef61664409fcdd66adf48254ccb2.png" width="24" height="24" style="border-radius:50%;object-fit:cover">
+        <div style="position:absolute;bottom:0;right:-2px;background:#da1e28;border:1px solid #1a1f26;border-radius:100px;min-width:14px;height:12px;display:flex;align-items:center;justify-content:center;padding:0 2px">
+          <span style="font-size:8px;font-weight:700;color:white;line-height:1">12</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- COMMAND AREA -->
+<div class="cmd-area">
+
+  <!-- HEADER — team selector lives here in Variant B -->
+  <div class="cmd-hdr">
+    <div class="cmd-title">Command center</div>
+    <div class="hdr-div" id="hdrDiv"></div>
+    <div class="hdr-tabs" id="hdrTabs">
+      <button class="ttab active" onclick="pickTeam(this,'emea')"><span class="tdot" style="background:#0f62fe"></span>EMEA Marketing</button>
+      <button class="ttab" onclick="pickTeam(this,'japac')"><span class="tdot" style="background:#20c54f"></span>JAPAC Social</button>
+      <button class="ttab" onclick="pickTeam(this,'hq')"><span class="tdot" style="background:#f5a623"></span>HQ Leadership</button>
+    </div>
+    <div class="hdr-team-select" id="hdrTeamSelect">
+      <select class="team-dropdown" id="teamDropdown" onchange="pickTeamFromSelect(this)">
+        <option value="emea" selected>EMEA Marketing</option>
+        <option value="japac">JAPAC Social</option>
+        <option value="hq">HQ Leadership</option>
+        <option value="na_east">NA East Coast</option>
+        <option value="na_west">NA West Coast</option>
+        <option value="latam">LATAM Growth</option>
+        <option value="uk">UK &amp; Ireland</option>
+        <option value="dach">DACH Region</option>
+        <option value="nordics">Nordics</option>
+        <option value="france">France</option>
+        <option value="iberia">Iberia</option>
+        <option value="india">India</option>
+        <option value="sea">Southeast Asia</option>
+        <option value="china">Greater China</option>
+        <option value="anz">Australia &amp; NZ</option>
+      </select>
+    </div>
+    <div class="hdr-right">
+      <button class="hdr-btn" title="Expand"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></button>
+    </div>
+  </div>
+
+  <div class="page">
+
+    <!-- GLOBAL CONTROLS — exact Figma match -->
+    <div class="gc">
+      <div class="gc-item">
+        <div class="gc-avatar" style="background:#6b5eb8">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+        </div>
+        <div class="gc-texts">
+          <div class="gc-name">Raleigh Raptors Pra…</div>
+          <div class="gc-plat gc-plat-fb">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="#0866ff"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            Facebook <span>/social-url</span>
+          </div>
+        </div>
+      </div>
+      <div class="gc-item">
+        <div class="gc-avatar" style="background:#b84b8a">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+        </div>
+        <div class="gc-texts">
+          <div class="gc-name">Spartan Stingers Pr…</div>
+          <div class="gc-plat gc-plat-ig">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#d73676" stroke-width="2.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.5" fill="#d73676" stroke="none"/></svg>
+            Instagram <span>/social-url</span>
+          </div>
+        </div>
+      </div>
+      <div class="gc-item">
+        <div class="gc-avatar" style="background:#6b5eb8">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+        </div>
+        <div class="gc-texts">
+          <div class="gc-name">Bison Brigade Prag…</div>
+          <div class="gc-plat gc-plat-fb">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="#0866ff"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            Facebook <span>/social-url</span>
+          </div>
+        </div>
+      </div>
+      <div class="gc-more">+8</div>
+      <div class="gc-spacer"></div>
+      <div class="gc-merge" id="gcMerge">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+        Data from all 3 teams
+      </div>
+      <button class="gc-edit">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="5" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="3" y="12" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="5" rx="1"/></svg>
+        Edit data sources
+      </button>
+    </div>
+
+    <!-- UPPER: KPIs + Trends -->
+    <div class="upper">
+      <div class="kpi-wrap">
+        <div class="kpi-row">
+          <div class="kpi-card">
+            <div class="kpi-inner">
+              <div class="kpi-meta"><div><div class="kpi-name">Number of engagements evolution</div><div class="kpi-period">Last 30 Days</div></div><div class="kpi-lvl">POST LEVEL</div></div>
+              <div class="kpi-val">931</div>
+              <div class="kpi-metric">Engagements</div>
+              <div class="kpi-chg up"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>+26% vs previous period</div>
+            </div>
+            <div class="kpi-chart"><svg viewBox="0 0 372 64" preserveAspectRatio="none">
+              <defs><linearGradient id="cg1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0f62fe" stop-opacity="0.12"/><stop offset="100%" stop-color="#0f62fe" stop-opacity="0"/></linearGradient></defs>
+              <path fill="url(#cg1)" d="M0,40 L15,38 L25,42 L35,30 L50,45 L60,22 L70,38 L85,50 L95,20 L105,35 L115,48 L130,25 L140,40 L155,18 L165,45 L175,30 L185,42 L200,15 L210,38 L225,28 L235,50 L245,32 L255,44 L265,22 L275,40 L285,30 L295,45 L310,20 L320,38 L335,25 L345,42 L355,30 L372,35 L372,64 L0,64 Z"/>
+              <polyline fill="none" stroke="#0f62fe" stroke-width="1.5" points="0,40 15,38 25,42 35,30 50,45 60,22 70,38 85,50 95,20 105,35 115,48 130,25 140,40 155,18 165,45 175,30 185,42 200,15 210,38 225,28 235,50 245,32 255,44 265,22 275,40 285,30 295,45 310,20 320,38 335,25 345,42 355,30 372,35"/>
+              <text x="6" y="62" class="axis-lbl">Jan 01</text><text x="338" y="62" class="axis-lbl">Jan 31</text>
+            </svg></div>
+            <div class="kpi-footer show" id="kf1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#9d9da0" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>All teams</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-inner">
+              <div class="kpi-meta"><div><div class="kpi-name">Number of impressions evolution</div><div class="kpi-period">Last 30 Days</div></div><div class="kpi-lvl">POST LEVEL</div></div>
+              <div class="kpi-val">40 734</div>
+              <div class="kpi-metric">Content impressions</div>
+              <div class="kpi-chg up"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>+26% vs previous period</div>
+            </div>
+            <div class="kpi-chart"><svg viewBox="0 0 372 64" preserveAspectRatio="none">
+              <defs><linearGradient id="cg2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0f62fe" stop-opacity="0.12"/><stop offset="100%" stop-color="#0f62fe" stop-opacity="0"/></linearGradient></defs>
+              <path fill="url(#cg2)" d="M0,42 L15,35 L25,48 L35,28 L50,42 L60,20 L70,36 L85,52 L95,18 L105,38 L115,50 L130,22 L140,42 L155,16 L165,44 L175,28 L185,40 L200,12 L210,35 L225,25 L235,52 L245,30 L255,46 L265,20 L275,38 L285,28 L295,42 L310,18 L320,36 L335,22 L345,40 L355,28 L372,32 L372,64 L0,64 Z"/>
+              <polyline fill="none" stroke="#0f62fe" stroke-width="1.5" points="0,42 15,35 25,48 35,28 50,42 60,20 70,36 85,52 95,18 105,38 115,50 130,22 140,42 155,16 165,44 175,28 185,40 200,12 210,35 225,25 235,52 245,30 255,46 265,20 275,38 285,28 295,42 310,18 320,36 335,22 345,40 355,28 372,32"/>
+              <text x="6" y="62" class="axis-lbl">Jan 01</text><text x="338" y="62" class="axis-lbl">Jan 31</text>
+            </svg></div>
+            <div class="kpi-footer show" id="kf2"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#9d9da0" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>All teams</div>
+          </div>
+        </div>
+        <div class="kpi-row">
+          <div class="kpi-card">
+            <div class="kpi-inner">
+              <div class="kpi-meta"><div><div class="kpi-name">Cross platform followers evolution</div><div class="kpi-period">Last 30 Days</div></div><div class="kpi-lvl">PROFILE LEVEL</div></div>
+              <div class="kpi-val">138.04 M</div>
+              <div class="kpi-metric">Followers</div>
+              <div class="kpi-chg up"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>+26% vs previous period</div>
+            </div>
+            <div class="kpi-chart"><svg viewBox="0 0 372 64" preserveAspectRatio="none">
+              <defs><linearGradient id="cg3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0f62fe" stop-opacity="0.12"/><stop offset="100%" stop-color="#0f62fe" stop-opacity="0"/></linearGradient></defs>
+              <path fill="url(#cg3)" d="M0,38 L15,42 L25,30 L35,46 L50,22 L60,40 L70,52 L85,28 L95,44 L105,18 L115,36 L130,48 L140,24 L155,40 L165,14 L175,32 L185,50 L200,22 L210,40 L225,30 L235,48 L245,20 L255,38 L265,52 L275,26 L285,44 L295,34 L310,50 L320,22 L335,38 L345,28 L355,46 L372,32 L372,64 L0,64 Z"/>
+              <polyline fill="none" stroke="#0f62fe" stroke-width="1.5" points="0,38 15,42 25,30 35,46 50,22 60,40 70,52 85,28 95,44 105,18 115,36 130,48 140,24 155,40 165,14 175,32 185,50 200,22 210,40 225,30 235,48 245,20 255,38 265,52 275,26 285,44 295,34 310,50 320,22 335,38 345,28 355,46 372,32"/>
+              <text x="6" y="62" class="axis-lbl">Jan 01</text><text x="338" y="62" class="axis-lbl">Jan 31</text>
+            </svg></div>
+            <div class="kpi-footer show" id="kf3"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#9d9da0" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>All teams</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-inner">
+              <div class="kpi-meta"><div><div class="kpi-name">Number of content evolution</div><div class="kpi-period">Last 30 Days</div></div><div class="kpi-lvl">POST LEVEL</div></div>
+              <div class="kpi-val">203</div>
+              <div class="kpi-metric">Content pieces</div>
+              <div class="kpi-chg up"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>+26% vs previous period</div>
+            </div>
+            <div class="kpi-chart"><svg viewBox="0 0 372 64" preserveAspectRatio="none">
+              <defs><linearGradient id="cg4" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0f62fe" stop-opacity="0.12"/><stop offset="100%" stop-color="#0f62fe" stop-opacity="0"/></linearGradient></defs>
+              <path fill="url(#cg4)" d="M0,36 L15,44 L25,28 L35,48 L50,20 L60,42 L70,54 L85,26 L95,46 L105,16 L115,38 L130,50 L140,22 L155,42 L165,12 L175,34 L185,52 L200,24 L210,42 L225,32 L235,50 L245,18 L255,40 L265,54 L275,28 L285,46 L295,36 L310,52 L320,20 L335,40 L345,26 L355,44 L372,30 L372,64 L0,64 Z"/>
+              <polyline fill="none" stroke="#0f62fe" stroke-width="1.5" points="0,36 15,44 25,28 35,48 50,20 60,42 70,54 85,26 95,46 105,16 115,38 130,50 140,22 155,42 165,12 175,34 185,52 200,24 210,42 225,32 235,50 245,18 255,40 265,54 275,28 285,46 295,36 310,52 320,20 335,40 345,26 355,44 372,30"/>
+              <text x="6" y="62" class="axis-lbl">Jan 01</text><text x="338" y="62" class="axis-lbl">Jan 31</text>
+            </svg></div>
+            <div class="kpi-footer show" id="kf4"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#9d9da0" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>All teams</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TRENDS -->
+      <div class="trends-card">
+        <div class="w-hdr">
+          <div class="w-title"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.74l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Trending in<div class="country-pill">Germany<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div></div>
+        </div>
+        <div class="trends-body">
+          <div class="trend"><div class="trend-name">Labubu</div><div class="trend-desc">Labubu is a phenomenon that has recently captured attention on social media. This unique type of toy blends fun and education, popular among children and parents.</div><div class="trend-tags"><span class="tag">Innovation</span><span class="tag">Keywords</span><span class="tag">Keywords</span><span class="tag">Keywords</span></div></div>
+          <div class="trend"><div class="trend-name">Sports Therapy</div><div class="trend-desc">Sports therapy plays a crucial role in helping athletes recover from injuries and enhance performance through specialized techniques.</div><div class="trend-tags"><span class="tag">Joint Mobility</span><span class="tag">Muscle Recovery</span><span class="tag">Pain Reduction</span><span class="tag">Injury Prevention</span><span class="tag">Stress Management</span><span class="tag">Cure Stability</span><span class="tag">Endurance Training</span></div></div>
+          <div class="trend"><div class="trend-name">Cultural Beats</div><div class="trend-desc">Cultural beats represent the rhythm of communities and their artistic expressions across generations.</div><div class="trend-tags"><span class="tag">Music</span><span class="tag">Community</span><span class="tag">Heritage</span></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SOCIAL LISTENING SUMMARY -->
+    <div>
+      <div class="sec-hdr">
+        <div class="sec-title">Social listening summary
+          <div class="sec-team-sel" id="listenSel">
+            <span style="color:var(--color-on-tertiary);font-weight:400;font-size:12px">Team:</span>
+            <select class="sel"><option>EMEA Marketing</option><option>JAPAC Social</option><option>HQ Leadership</option></select>
+            <div class="ii" data-tip="Each team has its own mention credits. Data shown for the selected team.">?</div>
+          </div>
+        </div>
+      </div>
+      <div class="listen-grid">
+        <div class="listen-card" id="ownedCard">
+          <div class="listen-hdr"><div class="listen-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Owned profiles</div><div class="ii" data-tip="Summary of your owned social profiles">?</div></div>
+          <div class="ctx-strip" id="ownedCtx"><span class="ctx-dot" id="ownedDot" style="background:#0f62fe"></span><span id="ownedTeam">EMEA Marketing</span><span class="ctx-sub">· query: brand mentions + owned profiles</span></div>
+          <div class="pw-sel" id="ownedPW"><span style="color:var(--color-on-tertiary)">Team:</span><select class="sel"><option>EMEA Marketing</option><option>JAPAC Social</option><option>HQ Leadership</option></select><div class="ii" data-tip="Each team has its own mention credits and query.">?</div></div>
+          <div class="listen-body">
+            <div class="insight"><div class="ins-title">1. Fan sentiment during key moments</div><div class="ins-text">Most conversation clusters around live game moments — touchdowns, turnovers, 4th down decisions, and last-minute scoring drives. When games are close, fans post in rapid bursts.</div><div class="ins-ex">Post examples: <a href="#">1</a> <a href="#">2</a> <a href="#">3</a></div></div>
+            <div class="insight"><div class="ins-title">2. Individual star player conversations</div><div class="ins-text">Team-level mentions remain high, but conversation revolves around star players — especially QBs, top receivers, defensive playmakers, and rising rookies.</div><div class="ins-ex">Post examples: <a href="#">1</a> <a href="#">2</a> <a href="#">3</a></div></div>
+          </div>
+        </div>
+        <div class="listen-card" id="compCard">
+          <div class="listen-hdr"><div class="listen-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Competitive insights</div><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#9d9da0" stroke-width="2" style="cursor:pointer;flex-shrink:0"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></div>
+          <div class="ctx-strip" id="compCtx"><span class="ctx-dot" id="compDot" style="background:#0f62fe"></span><span id="compTeam">EMEA Marketing</span><span class="ctx-sub">· 4 competitors tracked</span></div>
+          <div class="pw-sel" id="compPW"><span style="color:var(--color-on-tertiary)">Team:</span><select class="sel"><option>EMEA Marketing</option><option>JAPAC Social</option><option>HQ Leadership</option></select><div class="ii" data-tip="Each team tracks its own competitor profiles.">?</div></div>
+          <div class="listen-body">
+            <div class="insight"><div class="ins-title">1. Competitive positioning shift</div><div class="ins-text">Competitor brands are increasing engagement with behind-the-scenes content and athlete stories. Their audience response rate is growing 18% faster than category average.</div><div class="ins-ex">Post examples: <a href="#">1</a> <a href="#">2</a> <a href="#">3</a></div></div>
+            <div class="insight"><div class="ins-title">2. Share of voice trends</div><div class="ins-text">Brand mentions on X show a 12% increase in competitive share of voice. Key topics: product launches, sponsorship announcements, community campaigns.</div><div class="ins-ex">Post examples: <a href="#">1</a> <a href="#">2</a> <a href="#">3</a></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FREQUENTLY VISITED -->
+    <div>
+      <div class="sec-hdr"><div class="sec-title">Frequently visited</div></div>
+      <div class="vis-row">
+        <div class="vis-card"><div style="font-size:18px">🔓</div><div class="vis-name">My open</div><div class="vis-mod">Care</div><div class="vis-time">4 mins ago</div></div>
+        <div class="vis-card"><div style="font-size:18px">✈️</div><div class="vis-name">Airlines benchmark</div><div class="vis-mod">Unified Analytics</div><div class="vis-time">12 hours ago</div></div>
+        <div class="vis-card"><div style="font-size:18px">🛍️</div><div class="vis-name">Instagram Shopping</div><div class="vis-mod">Collections</div><div class="vis-time">Yesterday</div></div>
+        <div class="vis-card"><div style="font-size:18px">📢</div><div class="vis-name">Earned media</div><div class="vis-mod">Unified Analytics</div><div class="vis-time">3 days ago</div></div>
+      </div>
+    </div>
+
+    <!-- OBJECTIVES -->
+    <div>
+      <div class="sec-hdr">
+        <div class="sec-title">Objectives
+          <div class="sec-team-sel" id="objSel">
+            <span style="color:var(--color-on-tertiary);font-weight:400;font-size:12px">Team:</span>
+            <select class="sel"><option>EMEA Marketing</option><option>JAPAC Social</option><option>HQ Leadership</option></select>
+          </div>
+        </div>
+        <div class="sec-links">
+          <button class="sec-link">Start with new objective</button>
+          <span class="sec-div-line">|</span>
+          <button class="sec-link">Go to the board →</button>
+        </div>
+      </div>
+
+      <!-- NO blue pill here — removed per feedback -->
+
+      <div class="obj-grid">
+        <!-- Chart widget 1 -->
+        <div class="obj-card" id="obj1">
+          <div class="obj-ctx" id="obj1ctx"><span style="width:8px;height:8px;border-radius:50%;background:#0f62fe;display:inline-block;flex-shrink:0" id="obj1dot"></span><span id="obj1team">EMEA Marketing</span></div>
+          <div class="obj-whdr">
+            <div style="flex:1"><div class="obj-wname">Performance Measurement & ROI Optimization</div><div class="obj-period">Last 30 Days</div></div>
+            <div class="obj-menu"><span class="obj-3dot">···</span><div class="obj-status on-track">ON TRACK</div></div>
+          </div>
+          <div class="obj-body">
+            <div class="obj-val">48.3</div>
+            <div class="obj-chg up"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>+21%</div>
+            <div class="obj-meta-row"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Customer Acquisition Efficiency Index (CAEI)</div>
+            <div class="obj-meta-row"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Below 50 CAEI</div>
+          </div>
+          <div class="obj-chart">
+            <svg viewBox="0 0 279 162" preserveAspectRatio="none">
+              <rect x="0" y="79" width="279" height="83" fill="#f0fdf4" opacity="0.7"/>
+              <line x1="0" y1="79" x2="279" y2="79" stroke="#d1d5db" stroke-width="1" stroke-dasharray="4,3"/>
+              <g fill="#20c54f">
+                <rect x="4" y="118" width="5" height="28" rx="1"/><rect x="13" y="112" width="5" height="35" rx="1"/><rect x="22" y="122" width="5" height="24" rx="1"/>
+                <rect x="31" y="106" width="5" height="40" rx="1"/><rect x="40" y="114" width="5" height="32" rx="1"/><rect x="49" y="100" width="5" height="46" rx="1"/>
+                <rect x="58" y="108" width="5" height="38" rx="1"/><rect x="67" y="94" width="5" height="52" rx="1"/><rect x="76" y="76" width="5" height="70" rx="1"/>
+                <rect x="85" y="82" width="5" height="64" rx="1"/><rect x="94" y="88" width="5" height="58" rx="1"/><rect x="103" y="60" width="5" height="86" rx="1"/>
+                <rect x="112" y="58" width="5" height="88" rx="1"/><rect x="121" y="28" width="5" height="118" rx="1"/><rect x="130" y="4" width="5" height="142" rx="1"/>
+                <rect x="139" y="30" width="5" height="116" rx="1"/><rect x="148" y="74" width="5" height="72" rx="1"/><rect x="157" y="50" width="5" height="96" rx="1"/>
+                <rect x="166" y="36" width="5" height="110" rx="1"/><rect x="175" y="28" width="5" height="118" rx="1"/><rect x="184" y="10" width="5" height="136" rx="1"/>
+                <rect x="193" y="2" width="5" height="144" rx="1"/><rect x="202" y="36" width="5" height="110" rx="1"/><rect x="211" y="74" width="5" height="72" rx="1"/>
+                <rect x="220" y="30" width="5" height="116" rx="1"/><rect x="229" y="28" width="5" height="118" rx="1"/><rect x="238" y="2" width="5" height="144" rx="1"/>
+                <rect x="247" y="2" width="5" height="144" rx="1"/><rect x="256" y="2" width="5" height="144" rx="1"/><rect x="265" y="2" width="5" height="144" rx="1"/>
+              </g>
+              <text x="4" y="175" class="axis-lbl">Jan 01</text><text x="240" y="175" class="axis-lbl">Jan 29</text>
+              <rect x="0" y="71" width="30" height="14" fill="white"/>
+              <text x="3" y="82" font-size="9" fill="#9d9da0" font-family="Inter">AVG</text>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Chart widget 2 -->
+        <div class="obj-card" id="obj2">
+          <div class="obj-ctx" id="obj2ctx"><span style="width:8px;height:8px;border-radius:50%;background:#0f62fe;display:inline-block;flex-shrink:0" id="obj2dot"></span><span id="obj2team">EMEA Marketing</span></div>
+          <div class="obj-whdr">
+            <div style="flex:1"><div class="obj-wname">Performance Measurement & ROI Optimization</div><div class="obj-period">Last 30 Days</div></div>
+            <div class="obj-menu"><span class="obj-3dot">···</span><div class="obj-status off-track">OFF TRACK</div></div>
+          </div>
+          <div class="obj-body">
+            <div class="obj-val">12.2</div>
+            <div class="obj-chg dn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>-74%</div>
+            <div class="obj-meta-row"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Customer Acquisition Efficiency Index (CAEI)</div>
+            <div class="obj-meta-row"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Below 50 CAEI</div>
+          </div>
+          <div class="obj-chart">
+            <svg viewBox="0 0 279 162" preserveAspectRatio="none">
+              <rect x="0" y="79" width="279" height="83" fill="#fff1f1" opacity="0.7"/>
+              <line x1="0" y1="79" x2="279" y2="79" stroke="#d1d5db" stroke-width="1" stroke-dasharray="4,3"/>
+              <g fill="#f43636">
+                <rect x="4" y="2" width="5" height="144" rx="1"/><rect x="13" y="2" width="5" height="144" rx="1"/><rect x="22" y="2" width="5" height="144" rx="1"/>
+                <rect x="31" y="2" width="5" height="144" rx="1"/><rect x="40" y="2" width="5" height="144" rx="1"/><rect x="49" y="2" width="5" height="144" rx="1"/>
+                <rect x="58" y="2" width="5" height="144" rx="1"/><rect x="67" y="2" width="5" height="144" rx="1"/><rect x="76" y="2" width="5" height="144" rx="1"/>
+                <rect x="85" y="2" width="5" height="144" rx="1"/><rect x="94" y="2" width="5" height="144" rx="1"/><rect x="103" y="60" width="5" height="86" rx="1"/>
+                <rect x="112" y="58" width="5" height="88" rx="1"/><rect x="121" y="28" width="5" height="118" rx="1"/><rect x="130" y="36" width="5" height="110" rx="1"/>
+                <rect x="139" y="58" width="5" height="88" rx="1"/><rect x="148" y="76" width="5" height="70" rx="1"/><rect x="157" y="96" width="5" height="50" rx="1"/>
+                <rect x="166" y="108" width="5" height="38" rx="1"/><rect x="175" y="116" width="5" height="30" rx="1"/><rect x="184" y="122" width="5" height="24" rx="1"/>
+                <rect x="193" y="128" width="5" height="18" rx="1"/><rect x="202" y="132" width="5" height="14" rx="1"/><rect x="211" y="135" width="5" height="11" rx="1"/>
+                <rect x="220" y="137" width="5" height="9" rx="1"/><rect x="229" y="138" width="5" height="8" rx="1"/><rect x="238" y="139" width="5" height="7" rx="1"/>
+                <rect x="247" y="140" width="5" height="6" rx="1"/><rect x="256" y="141" width="5" height="5" rx="1"/><rect x="265" y="142" width="5" height="4" rx="1"/>
+              </g>
+              <text x="4" y="175" class="axis-lbl">Jan 01</text><text x="240" y="175" class="axis-lbl">Jan 29</text>
+              <rect x="0" y="71" width="30" height="14" fill="white"/>
+              <text x="3" y="82" font-size="9" fill="#9d9da0" font-family="Inter">AVG</text>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Your top objectives — also team-dependent -->
+        <div class="obj-card" id="obj3">
+          <div class="obj-ctx" id="obj3ctx"><span style="width:8px;height:8px;border-radius:50%;background:#0f62fe;display:inline-block;flex-shrink:0" id="obj3dot"></span><span id="obj3team">EMEA Marketing</span></div>
+          <div class="top-obj-hdr">Your top objectives</div>
+          <div class="top-obj-body">
+            <div class="prog-sec-lbl">YOU ARE ALMOST THERE</div>
+            <div class="prog-item"><div class="prog-name">Maximizing Audience Engagement through Social Media Strategies in the Evolving Landscape of Entertainment</div><div class="prog-bar"><div class="prog-fill" style="width:89%;background:#20c54f"></div></div><div class="prog-meta">89%</div></div>
+            <div class="prog-item"><div class="prog-name">Maximizing Audience Engagement through Social Media Strategies in the Evolving Landscape of Entertainment</div><div class="prog-bar"><div class="prog-fill" style="width:89%;background:#20c54f"></div></div><div class="prog-meta">89%</div></div>
+            <div class="prog-sec-lbl">IN PROGRESS</div>
+            <div class="prog-item"><div class="prog-name">Maximizing Audience Engagement through Social Media Strategies in the Evolving Landscape of Entertainment</div><div class="prog-bar"><div class="prog-fill" style="width:56%;background:#f5a623"></div></div><div class="prog-meta">56%</div></div>
+            <div class="prog-item"><div class="prog-name">Maximizing Audience Engagement through Social Media Strategies in the Evolving Landscape of Entertainment</div><div class="prog-bar"><div class="prog-fill" style="width:56%;background:#f5a623"></div></div><div class="prog-meta">56%</div></div>
+            <div class="prog-item"><div class="prog-name">Maximizing Audience Engagement through Social Media Strategies in the Evolving Landscape of Entertainment</div><div class="prog-bar"><div class="prog-fill" style="width:56%;background:#f5a623"></div></div><div class="prog-meta">56%</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div><!-- /cmd-area -->
+
+<!-- SIDE PANEL -->
+<div class="side">
+  <div class="side-hdr">
+    <span class="side-title">Resources</span>
+    <button class="side-collapse-btn" id="sideCollapseBtn" onclick="toggleSide()" title="Collapse panel">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+  </div>
+  <!-- Collapsed icons strip (visible only when collapsed) -->
+  <div class="side-collapsed-icons">
+    <!-- Notification icon -->
+    <div style="position:relative;cursor:pointer">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.45)" stroke-width="1.7"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+      <div style="position:absolute;top:-2px;right:-4px;background:#da1e28;border-radius:6px;min-width:16px;height:14px;display:flex;align-items:center;justify-content:center;padding:0 3px">
+        <span style="font-size:8px;font-weight:700;color:white">32</span>
+      </div>
+    </div>
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.45)" stroke-width="1.7" style="cursor:pointer"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+    <img src="assets/64993e063ccbbe2ec7fd166660ca13185ce73a68.svg" width="24" height="24">
+  </div>
+  <div class="side-body">
+    <div class="welcome-card">
+      <div class="welcome-hdr">
+        <div><div class="welcome-title">Welcome to your Command Center</div><div class="welcome-sub">Click and discover what Command Center unlocks for you!</div></div>
+        <button class="hdr-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+      </div>
+      <div class="welcome-video">
+        <div style="position:absolute;inset:0;background:linear-gradient(135deg,#0f2027,#203a43,#2c5364)"></div>
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px">
+          <div style="background:white;border-radius:6px;padding:8px;width:200px;opacity:.9">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-bottom:4px">
+              <div style="background:#f3f3f5;border-radius:3px;padding:6px"><div style="font-size:8px;color:#9d9da0">Followers</div><div style="font-size:13px;font-weight:700">34.5</div></div>
+              <div style="background:#f3f3f5;border-radius:3px;padding:6px"><div style="font-size:8px;color:#9d9da0">Impressions</div><div style="font-size:13px;font-weight:700">21.5</div></div>
+            </div>
+            <div style="background:#f3f3f5;border-radius:3px;padding:5px;font-size:8px;color:#9d9da0">Objectives progress</div>
+          </div>
+          <div class="play"><svg viewBox="0 0 24 24" width="20" height="20" fill="white"><polygon points="5,3 19,12 5,21"/></svg></div>
+        </div>
+      </div>
+    </div>
+    <div class="art-card">
+      <div class="art-img" style="background:linear-gradient(160deg,#1a237e 0%,#311b92 60%,#4a148c 100%);position:relative;overflow:hidden">
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:4px">
+          <div style="color:white;font-size:22px;font-weight:700;letter-spacing:-.5px">emplifi</div>
+          <div style="color:rgba(255,255,255,.7);font-size:14px;font-weight:400">Webinar</div>
+        </div>
+      </div>
+      <div class="art-body"><div class="art-title">Mastering Social Media Maturity: A 3-Part Webinar Series</div><div class="art-desc">Today's consumers expect seamless, personalized experiences across every social touchpoint — from discovery to support. But delivering that kind of consi…</div></div>
+    </div>
+    <div class="art-card">
+      <div class="art-img" style="background:linear-gradient(160deg,#0d2233 0%,#1a3a4a 50%,#234d63 100%);position:relative;overflow:hidden">
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center">
+          <div style="color:white;font-size:15px;font-weight:600;text-align:center;padding:0 20px">Tactics webinar</div>
+        </div>
+      </div>
+      <div class="art-body"><div class="art-title">Tactics webinar</div><div class="art-desc">Learn how to use industry shaped tactics to reach your goals.</div></div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /app -->
+
+<script src="app.js"></script>
+</body>
+</html>
