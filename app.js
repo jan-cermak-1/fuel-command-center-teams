@@ -49,8 +49,16 @@ function setV(v) {
   const hdrInfo = document.getElementById('hdrInfo');
   if (hdrInfo) hdrInfo.classList.toggle('show', iB || iD);
 
-  // Merge badge (A only)
-  document.getElementById('gcMerge').classList.toggle('show', v==='A');
+  // Variant A: "Data from all 3 teams" in widget headers; team name in obj1/obj2 whdr (not in gc bar)
+  const isA = v === 'A';
+  ['mergeBadgeOwned','mergeBadgeComp','mergeBadgeObj3'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.classList.toggle('show', isA);
+  });
+  ['obj1WhdrTeam','obj2WhdrTeam'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.classList.toggle('show', isA);
+  });
 
   // KPI footers — always show "All teams" for B and A; hide for C (per-widget context)
   ['kf1','kf2','kf3','kf4'].forEach(id=>{
@@ -83,7 +91,7 @@ function applyTeam(team) {
   activeTeam = team;
 
   // Update all team name labels
-  ['ownedTeam','compTeam','obj1team','obj2team','obj3team'].forEach(id=>{
+  ['ownedTeam','compTeam','obj1team','obj2team','obj3team','obj1WhdrTeam','obj2WhdrTeam'].forEach(id=>{
     const e=document.getElementById(id); if(e) e.textContent=t.name;
   });
   // Header pills (B): keep active tab in sync with global team

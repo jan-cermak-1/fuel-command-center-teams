@@ -207,6 +207,8 @@ body{font-family:'Inter',-apple-system,sans-serif;font-size:13px;color:var(--col
 .gc-spacer{flex:1}
 .gc-merge{display:none;align-items:center;gap:5px;padding:4px 10px;margin-right:8px;background:#dbeafe;border-radius:var(--r-pill);font-size:11px;font-weight:500;color:var(--color-btn-pri)}
 .gc-merge.show{display:flex}
+.gc-merge.merge-badge{margin-right:0}
+.gc-merge.team-badge{flex-shrink:0}
 .gc-edit{display:flex;align-items:center;gap:6px;padding:7px 14px;margin-right:12px;border:1px solid var(--color-border-sec);border-radius:var(--r-md);background:var(--color-layer-level-1);font-size:12px;font-weight:500;font-family:inherit;color:var(--color-on-secondary);cursor:pointer;box-shadow:var(--sh1);white-space:nowrap}
 .gc-edit:hover{background:var(--color-layer-level-0)}
 
@@ -260,7 +262,8 @@ body{font-family:'Inter',-apple-system,sans-serif;font-size:13px;color:var(--col
 .listen-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
 .listen-card{background:var(--color-layer-level-1);border-radius:var(--r-lg);box-shadow:var(--sh1);overflow:hidden;display:flex;flex-direction:column}
 /* Listening: same team header pattern as Objectives (.obj-ctx) — team row first, then card title */
-.listen-hdr{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:1px solid var(--color-border-sec);flex-shrink:0}
+.listen-hdr{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:1px solid var(--color-border-sec);flex-shrink:0;gap:10px}
+.listen-hdr-actions{display:flex;align-items:center;gap:8px;flex-shrink:0}
 .listen-title{font-size:13px;font-weight:600;display:flex;align-items:center;gap:6px}
 .obj-ctx.listen-ctx{display:none}
 .obj-ctx.listen-ctx.show{display:flex;animation:fadeDown .2s ease-out}
@@ -284,7 +287,7 @@ body{font-family:'Inter',-apple-system,sans-serif;font-size:13px;color:var(--col
 .obj-card{background:var(--color-layer-level-1);border-radius:var(--r-lg);box-shadow:var(--sh1);overflow:hidden}
 .obj-ctx{display:none;align-items:center;gap:6px;padding:6px 14px;background:#dbeafe;border-bottom:1px solid rgba(15,98,254,.12);font-size:11px;font-weight:600;color:var(--color-btn-pri)}
 .obj-ctx.show{display:flex;animation:fadeDown .2s ease-out}
-.obj-whdr{padding:14px 14px 8px;border-bottom:1px solid var(--color-border-sec);display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+.obj-whdr{padding:14px 14px 8px;border-bottom:1px solid var(--color-border-sec);display:flex;justify-content:space-between;align-items:center;gap:8px}
 .obj-menu{display:flex;align-items:center;gap:4px}
 .obj-3dot{font-size:16px;color:var(--color-on-tertiary);cursor:pointer;padding:0 2px;letter-spacing:1px;line-height:1}
 .obj-wname{font-size:13px;font-weight:600;line-height:1.4;flex:1}
@@ -300,7 +303,8 @@ body{font-family:'Inter',-apple-system,sans-serif;font-size:13px;color:var(--col
 .obj-chart svg{width:100%;height:162px;overflow:visible}
 
 /* top objectives */
-.top-obj-hdr{padding:14px 18px;border-bottom:1px solid var(--color-border-sec);font-size:13px;font-weight:600}
+.top-obj-hdr{padding:14px 18px;border-bottom:1px solid var(--color-border-sec);font-size:13px;font-weight:600;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.top-obj-title{flex:1;min-width:0}
 .top-obj-body{padding:14px 18px;display:flex;flex-direction:column;gap:10px;overflow-y:auto;max-height:400px}
 .prog-sec-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--color-on-tertiary);margin-top:4px}
 .prog-item{display:flex;flex-direction:column;gap:4px}
