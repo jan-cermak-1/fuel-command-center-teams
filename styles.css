@@ -332,18 +332,20 @@ body{font-family:'Inter',-apple-system,sans-serif;font-size:13px;color:var(--col
 .tag{padding:3px 9px;background:var(--color-layer-level-0);border-radius:var(--r-pill);font-size:11px;color:var(--color-on-secondary)}
 
 /* ── SECTION HEADER ── */
-.sec-hdr{display:flex;align-items:center;justify-content:space-between;height:42px}
-.sec-title{font-size:16px;font-weight:500;letter-spacing:-.011em;line-height:24px;display:flex;align-items:center;gap:10px}
+.sec-hdr{display:flex;align-items:center;justify-content:space-between;min-height:42px;padding:4px 0}
+.sec-title{font-size:16px;font-weight:500;letter-spacing:-.011em;line-height:24px;display:flex;align-items:center;gap:10px;flex-wrap:nowrap;flex:1;min-width:0}
+.sec-heading-txt{flex:1 1 auto;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .sec-links{display:flex;align-items:center;gap:12px}
 .sec-link{color:var(--color-on-interactive);cursor:pointer;background:none;border:none;font-size:13px;font-family:inherit;display:flex;align-items:center;gap:3px}
 .sec-div-line{color:var(--color-on-tertiary)}
-.sec-team-sel{display:none;align-items:center;gap:10px;font-size:12px;flex-wrap:wrap}
-.sec-team-sel.show{display:flex}
-/* Same styling as header team dropdown; slightly constrained in section titles */
+.sec-team-lbl{flex-shrink:0;color:var(--color-on-tertiary);font-weight:400;font-size:12px;white-space:nowrap}
+.sec-team-sel{display:none;align-items:center;gap:8px;font-size:12px;flex-wrap:nowrap;flex-shrink:0}
+.sec-team-sel.show{display:inline-flex}
+/* Same styling as header team dropdown; single line in section row */
 .sec-team-sel .team-dropdown{
-  width:min(220px, 100%);
-  min-width:160px;
-  max-width:min(240px, 55vw);
+  width:auto;
+  min-width:120px;
+  max-width:min(200px, 36vw);
   flex:0 1 auto;
 }
 
