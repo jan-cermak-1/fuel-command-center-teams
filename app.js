@@ -67,16 +67,15 @@ function setV(v) {
     el.classList.add('show');
   });
 
-  // Listening ctx strips (B and D)
-  document.getElementById('ownedCtx').classList.toggle('show', iB || iD);
-  document.getElementById('compCtx').classList.toggle('show', iB || iD);
-
   // Section selectors (C)
   document.getElementById('listenSel').classList.toggle('show', iC);
   document.getElementById('objSel').classList.toggle('show', iC);
 
-  // Obj team ctx strips (B and D) — all 3 cards including top objectives
-  ['obj1ctx','obj2ctx','obj3ctx'].forEach(id=>document.getElementById(id).classList.toggle('show', iB || iD));
+  // Blue team headers on widgets: B/D (global team) + C (per-section selects)
+  const teamHdr = iB || iD || iC;
+  document.getElementById('ownedCtx').classList.toggle('show', teamHdr);
+  document.getElementById('compCtx').classList.toggle('show', teamHdr);
+  ['obj1ctx','obj2ctx','obj3ctx'].forEach(id=>document.getElementById(id).classList.toggle('show', teamHdr));
 }
 
 function pickTeamFromSelect(sel) {
